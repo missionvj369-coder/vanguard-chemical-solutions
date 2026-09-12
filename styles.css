@@ -339,17 +339,27 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;b
   .mhead .menu a{padding:7px 8px;font-size:10px}
   .mhead .menu .cta{padding:8px 12px;font-size:10.5px}
 }
-/* scene strip: small green-tinted image, right after header, NO text */
-.scene-strip{position:relative;width:100%;height:200px;overflow:hidden;background-color:#1AA37E}
-.scene-strip::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;opacity:.80}
-.scene-strip.banner-home::before{background-image:url("hero-plant.svg")}
-.scene-strip.banner-about::before{background-image:url("bg-factory.svg")}
-.scene-strip.banner-products::before{background-image:url("bg-lab.svg")}
-.scene-strip.banner-contact::before{background-image:url("bg-port.svg")}
-.scene-strip::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,163,126,.94) 0%,rgba(18,140,107,.78) 50%,rgba(26,163,126,.68) 100%)}
-/* page title band below ticker */
-.page-title{padding:28px 0 0}
-.page-title .lead{color:var(--muted);max-width:680px;font-size:15px;font-weight:300}
+/* pbanner: full-screen hero, white background, faint scene image, content overlaid */
+.pbanner{position:relative;min-height:440px;display:flex;align-items:center;background-size:cover;background-position:center;color:var(--navy);overflow:hidden;background-color:#fff}
+.pbanner::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;opacity:.10}
+.pbanner.banner-home::before{background-image:url("hero-plant.svg")}
+.pbanner.banner-about::before{background-image:url("bg-factory.svg")}
+.pbanner.banner-products::before{background-image:url("bg-lab.svg")}
+.pbanner.banner-contact::before{background-image:url("bg-port.svg")}
+.pbanner .container{position:relative;z-index:1;width:min(1180px,92%);margin:0 auto;padding:60px 0}
+.pbanner .eyebrow{color:var(--navy);border-color:var(--line);background:var(--bg2)}
+.pbanner .eyebrow::before{background:var(--green)}
+.pbanner h1{color:var(--navy);font-size:clamp(34px,4.6vw,56px);margin:20px 0 14px;max-width:760px}
+.pbanner h1 em{color:var(--green)}
+.pbanner .lead,.pbanner .sub{color:var(--muted);max-width:640px;font-size:15px;font-weight:300}
+.pbanner .hstat{background:var(--bg2);border:1px solid var(--hairline);border-radius:var(--radius);padding:16px 20px}
+.pbanner .hstat strong{color:var(--navy);font-size:clamp(22px,3.4vw,34px)}
+.pbanner .hstat span{color:var(--muted2);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.pbanner .bstat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.pbanner .hero-cta{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+.pbanner .crumbs{display:flex;gap:10px;align-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:18px}
+.pbanner .crumbs a:hover{color:var(--green2)}
+.pbanner .crumbs b{color:var(--navy)}
 /* ticker */
 .ticker{background:var(--navy);color:#fff;font-size:11px;letter-spacing:.1em;overflow:hidden;padding:10px 0;white-space:nowrap}
 .ticker-track{display:flex;gap:40px;animation:ticker 38s linear infinite;min-width:max-content}
@@ -361,6 +371,7 @@ html,body{overflow-x:hidden}
 body{min-width:0}
 .container{min-width:0}
 img{max-width:100%}
+.pbanner .container{min-width:0}
 .tabbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-start}
 .tabbtn{white-space:nowrap}
 .panel .chips,.panel .mini-note{overflow-wrap:break-word}
@@ -369,8 +380,14 @@ img{max-width:100%}
 .pcard,.info-card,.cta-band{flex:1 1 auto;min-width:0}
 .chat .bubble{max-width:92%;font-size:13px}
 .cat-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+.cat-grid .cat h4{font-size:15px}
 @media(max-width:980px){
-  .scene-strip{height:150px}
+  .pbanner{min-height:340px}
+  .pbanner .container{padding:44px 0}
+  .pbanner h1{font-size:clamp(26px,4vw,40px)}
+  .pbanner .lead{font-size:14px}
+  .pbanner .bstat{grid-template-columns:repeat(2,1fr);gap:12px}
+  .pbanner .hstat{padding:12px 16px}
   .mhead-inner{padding:10px 0;gap:10px}
   .mhead .brand-txt strong{font-size:12px;letter-spacing:.10em}
   .mhead .brand-txt span{font-size:7.5px;letter-spacing:.34em}
@@ -380,7 +397,6 @@ img{max-width:100%}
   .mhead .burger{display:block}
   .mhead .menu.mobile-status{position:absolute;top:100%;left:0;right:0;background:#fff;padding:14px 16px;flex-direction:column;gap:6px;box-shadow:0 18px 34px rgba(0,0,0,.18);z-index:60}
   .mhead .menu.mobile-status a{padding:12px 14px;font-size:12.5px;width:100%;text-align:center;border-radius:8px}
-  .page-title{padding:20px 0 0}
   .tabbar,.filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   .tabbar::-webkit-scrollbar,.filters::-webkit-scrollbar{display:none}
   .tabbtn,.fbtn{padding:11px 14px;font-size:10.5px;white-space:nowrap;flex:none;width:auto}
@@ -401,12 +417,17 @@ img{max-width:100%}
   .mhead .brand-logo{height:34px;max-width:150px}
   .mhead .brand-txt strong{font-size:11px}
   .mhead .burger{margin-left:auto}
-  .scene-strip{height:120px}
+  .pbanner{min-height:280px}
+  .pbanner .container{padding:30px 0}
+  .pbanner h1{font-size:clamp(22px,5.2vw,30px);margin-top:8px}
+  .pbanner .lead{font-size:13px;max-width:100%}
+  .pbanner .bstat{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+  .pbanner .hstat{padding:12px 14px}
+  .pbanner .hero-cta{flex-direction:column;gap:10px;margin-top:20px}
+  .pbanner .hero-cta a{width:100%;text-align:center}
+  .pbanner .eyebrow{font-size:10px}
   .ticker{font-size:10px;padding:8px 0}
   .ticker-track{gap:28px}
-  .page-title{padding:16px 0 0}
-  .page-title h1{font-size:22px}
-  .page-title .lead{font-size:13px}
   .panel{padding:18px 16px}
   .div-head{gap:10px}
   .div-icon{width:40px;height:40px}
@@ -425,237 +446,18 @@ img{max-width:100%}
   .info-card,.pcard{padding:18px}
   .pcard h3{font-size:17px}
   section{padding:40px 0}
+  .tabbar,.filters{width:100%;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tabbar::-webkit-scrollbar,.filters::-webkit-scrollbar{display:none}
+  .tabbtn,.fbtn{padding:9px 14px;font-size:10.5px;white-space:nowrap;flex:none;width:auto}
 }
 @media(max-width:380px){
   .mhead .brand-logo{height:30px;max-width:120px}
   .mhead .brand-txt strong{font-size:10.5px}
   .mhead .brand-txt span{display:none}
-  .scene-strip{height:100px}
-  .ticker{font-size:9.5px}
-  .page-title h1{font-size:20px}
-  .vals{grid-template-columns:1fr}
-}
-
-/* ===== IMAGE + ALL-DEVICE LAYOUT FIXES (mobile-first, no overflow) ===== */
-html,body{overflow-x:hidden}
-body{min-width:0}
-.container{min-width:0}
-img,max-width:100%!not(exclamation){max-width:100%}
-.pbanner .container{min-width:0}
-.pbanner{overflow:hidden}
-.pbanner .hstat> div{min-width:0}
-.pbanner .hero-cta{flex-wrap:wrap;gap:10px}
-.pbanner .hero-cta a{min-width:0;flex:1 1 auto}
-.pbanner .bstat{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%}
-.pbanner .bstat> div{min-width:0;text-align:center;padding:6px 0}
-.pbanner .bstat strong{display:block;font-size:clamp(24px,4vw,38px);line-height:1.05}
-.pbanner .bstat span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-top:6px;color:#EAF6F2}
-.hero-art svg{width:100%;height:auto;display:block}
-.pbanner .eyebrow,.pbanner h1,.pbanner .lead,.pbanner .sub{overflow-wrap:break-word;word-break:break-word}
-.tabbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-start}
-.tabbtn{white-space:nowrap}
-.panel .chips,.panel .mini-note{overflow-wrap:break-word}
-.panel .chips span{white-space:nowrap}
-.pgrid,.vals,.fgrid,.cat-grid,.contact-grid,.split,.hero-grid,.cards3,.steps,.strip-inner{overflow:hidden}
-.pc card,.info-card,.cta-band{flex:1 1 auto;min-width:0}
-.pbanner .container .row-flex{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.pbanner .container .row-flex>*{min-width:0;flex:1 1 240px}
-/* mobile menu (burger) — ensure it never overflows & closes cleanly */
-.mhead{position:sticky;top:0;z-index:80}
-.mhead-inner{position:relative}
-.mhead .menu.mobile-status{overflow:hidden}
-/* small-touch: ensure CTA text doesn't overflow green header */
-.mhead .menu a,.mhead .menu .cta{font-size:clamp(10px,1.4vw,12.5px)}
-@media(max-width:980px){
-  .pbanner{min-height:290px}
-  .pbanner .container{padding:34px 0}
-  .pbanner h1{font-size:clamp(22px,4.4vw,34px)}
-  .pbanner .lead{font-size:13px}
-  .pbanner .bstat{grid-template-columns:repeat(2,1fr);gap:10px}
-  .pbanner .bstat> div{padding:4px 0}
-  .pbanner .hero-cta a{padding:13px 20px;font-size:11px}
-  .mhead .brand-logo{height:38px;max-width:200px}
-  .mhead .brand-txt strong{font-size:12px}
-  .mhead .brand-txt span{font-size:7.5px}
-  .mhead .menu a{padding:8px 10px;font-size:10.5px}
-}
-@media(max-width:620px){
-  .mhead{position:relative}
-  .mhead-inner{flex-wrap:nowrap;justify-content:space-between}
-  .mhead .brand-logo{height:34px;max-width:150px}
-  .mhead .brand-txt strong{font-size:11px}
-  .mhead .burger{margin-left:auto}
   .pbanner{min-height:240px}
-  .pbanner .container{padding:24px 0}
-  .pbanner h1{font-size:clamp(20px,5.2vw,28px);margin-top:6px}
-  .pbanner .lead{font-size:12.5px;max-width:100%}
-  .pbanner .bstat{grid-template-columns:repeat(2,1fr);gap:8px}
-  .pbanner .bstat strong{font-size:22px}
-  .pbanner .bstat> div{padding:2px 0}
-  .pbanner .hero-cta{flex-direction:column;gap:10px}
-  .pbanner .hero-cta a{width:100%;text-align:center}
-  .pbanner .eyebrow{font-size:10px}
-  .tabbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
-  .tabbar::-webkit-scrollbar{display:none}
-  .tabbtn{padding:11px 14px;font-size:10.5px;white-space:nowrap}
-  .panel{padding:18px}
-  .panel .chips span{padding:6px 12px;font-size:11px}
-  .panel .mini-note{font-size:11px;padding:8px 12px}
-  .panel .chips{justify-content:center}
-  .pgrid{grid-template-columns:1fr;gap:14px}
-  .fgrid{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr}
-  .cat-grid{grid-template-columns:1fr}
-  .cta-band{flex-direction:column;align-items:flex-start;padding:28px;text-align:left}
-  .cta-band h2{font-size:22px}
-  .cta-band .btn{margin-top:14px;width:100%;text-align:center}
-  .info-card,.pcard{padding:20px}
-  .pcard h3{font-size:18px}
-}
-@media(max-width:400px){
-  .mhead .brand-logo{height:30px;max-width:120px}
-  .mhead .brand-txt strong{font-size:10.5px}
-  .mhead .brand-txt span{display:none}
-  .mhead .menu a{padding:7px 8px;font-size:10px}
-  .mhead .menu .cta{padding:8px 12px;font-size:10.5px}
-  .pbanner{min-height:210px}
-  .pbanner .container{padding:18px 0}
+  .pbanner .container{padding:22px 0}
   .pbanner h1{font-size:20px}
   .pbanner .lead{font-size:12px}
-  .pbanner .bstat strong{font-size:18px}
+  .ticker{font-size:9.5px}
+  .vals{grid-template-columns:1fr}
 }
-
-@media(max-width:620px){
-  .pbanner{min-height:240px}
-  .pbanner .container{padding:26px 0}
-  .pbanner h1{font-size:clamp(20px,6vw,28px);margin-top:6px}
-  .pbanner .lead,.pbanner .sub{font-size:12.5px;max-width:100%}
-  .pbanner .hero-cta,.pbanner .bstat{flex-direction:column;align-items:flex-start}
-  .pbanner .bstat>div{width:100%}
-  .panel{padding:18px 16px}
-  .div-head{gap:10px}
-  .div-icon{width:40px;height:40px}
-  .div-icon svg{width:22px;height:22px}
-  .chips{display:flex;flex-wrap:wrap;gap:6px}
-  .chips span{padding:5px 11px;font-size:10.5px}
-  .mini-note{font-size:11px;padding:8px 12px}
-  .tabbar,.filters{width:100%;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .tabbar::-webkit-scrollbar,.filters::-webkit-scrollbar{display:none}
-  .tabbtn,.fbtn{padding:9px 14px;font-size:10.5px;white-space:nowrap;flex:none;width:auto}
-  .split,.hero-grid,.contact-grid{grid-template-columns:1fr!important}
-  .cards3,.cat-grid,.pgrid,.steps,.form,.strip-inner,.fgrid,.vals{grid-template-columns:1fr!important}
-  section{padding:34px 0}
-  .compact{padding-top:22px}
-  .cta-band{padding:26px 22px;flex-direction:column;align-items:flex-start;gap:18px}
-  .cta-band h2{font-size:22px}
-  footer{padding:44px 0 24px}
-  .fgrid{gap:22px;font-size:12.5px}
-  .fbottom{font-size:10.5px}
-  .tabbtn.active,.fbtn.active{background:#005A48!important;color:#fff!important}
-/* ===== IMAGE + MOBILE LAYOUT LOCK (all devices) ===== */
-.mhead .brand-logo,.pbanner svg,.hero-art svg,.pcard img,.val img,.info-card img,.brand-logo{max-width:100%;height:auto;display:block}
-.pbanner{overflow:visible}
-.pbanner .container{overflow:visible}
-.hero-art{overflow:hidden}
-.pbanner.banner-home,.pbanner.banner-about,.pbanner.banner-products,.pbanner.banner-contact{background-size:cover;background-position:center}
-@media(max-width:480px){
-  .pbanner{min-height:200px}
-  .pbanner .container{padding:20px 0}
-  .pbanner h1{font-size:clamp(18px,5.5vw,24px)}
-  .pbanner .lead,.pbanner .sub{font-size:11.5px;line-height:1.55}
-  .pbanner .hstat strong{font-size:18px}
-  .pbanner .hstat span{font-size:10px}
-  .mhead-inner{gap:6px;padding:8px 0}
-  .mhead .brand-logo{height:30px;max-width:120px}
-  .mhead .brand-txt strong{font-size:10px;letter-spacing:.08em}
-  .mhead .menu a{padding:7px 8px;font-size:10px}
-  .mhead .burger{padding:5px 8px;font-size:12px}
-  .mhead .menu.mobile-status{padding:10px 12px;gap:4px}
-  .mhead .menu.mobile-status a{padding:10px 12px;font-size:11.5px}
-  .panel{padding:14px 12px}
-  .chips span{padding:4px 9px;font-size:10px}
-  .mini-note{font-size:10.5px;padding:7px 10px}
-  .div-icon{width:34px;height:34px}
-  .div-icon svg{width:19px;height:19px}
-  section{padding:28px 0}
-  .compact{padding-top:18px}
-  .cta-band{padding:20px 16px;gap:14px}
-  .cta-band h2{font-size:19px}
-  .cta-band .btn{padding:11px 18px;font-size:10.5px}
-  footer{padding:34px 0 18px}
-  .fgrid{gap:16px;font-size:11.5px}
-  .fgrid h5{font-size:12.5px}
-  .fbottom{font-size:9.5px;padding-top:12px}
-  .tbl{font-size:11.5px}
-  .tbl th,.tbl td{padding:8px 9px}
-  .search{padding:11px 13px;font-size:13px}
-  .form{gap:9px}
-  label{font-size:9px}
-  input,select,textarea{padding:9px 11px;font-size:12.5px}
-}
-@media(max-width:360px){
-  .mhead .brand-logo{height:26px;max-width:100px}
-  .mhead .brand-txt strong{font-size:9.5px}
-  .mhead .menu a{padding:6px 6px;font-size:9.5px}
-  .pbanner{min-height:170px}
-  .pbanner .container{padding:14px 0}
-  .pbanner h1{font-size:clamp(16px,5vw,20px)}
-  .pbanner .hstat strong{font-size:15px}
-  section{padding:22px 0}
-  .panel{padding:11px 9px}
-}
-
-/* ===== IMAGE + MOBILE LAYOUT LOCK (all devices) ===== */
-
-.mhead .brand-logo,.pbanner svg,.hero-art svg,.pcard img,.val img,.info-card img,.brand-logo{max-width:100%;height:auto;display:block}
-.pbanner{overflow:visible}
-.pbanner .container{overflow:visible}
-.hero-art{overflow:hidden}
-.pbanner.banner-home,.pbanner.banner-about,.pbanner.banner-products,.pbanner.banner-contact{background-size:cover;background-position:center}
-@media(max-width:480px){
-  .pbanner{min-height:200px}
-  .pbanner .container{padding:20px 0}
-  .pbanner h1{font-size:clamp(18px,5.5vw,24px)}
-  .pbanner .lead,.pbanner .sub{font-size:11.5px;line-height:1.55}
-  .pbanner .hstat strong{font-size:18px}
-  .pbanner .hstat span{font-size:10px}
-  .mhead-inner{gap:6px;padding:8px 0}
-  .mhead .brand-logo{height:30px;max-width:120px}
-  .mhead .brand-txt strong{font-size:10px;letter-spacing:.08em}
-  .mhead .menu a{padding:7px 8px;font-size:10px}
-  .mhead .burger{padding:5px 8px;font-size:12px}
-  .mhead .menu.mobile-status{padding:10px 12px;gap:4px}
-  .mhead .menu.mobile-status a{padding:10px 12px;font-size:11.5px}
-  .panel{padding:14px 12px}
-  .chips span{padding:4px 9px;font-size:10px}
-  .mini-note{font-size:10.5px;padding:7px 10px}
-  .div-icon{width:34px;height:34px}
-  .div-icon svg{width:19px;height:19px}
-  section{padding:28px 0}
-  .compact{padding-top:18px}
-  .cta-band{padding:20px 16px;gap:14px}
-  .cta-band h2{font-size:19px}
-  .cta-band .btn{padding:11px 18px;font-size:10.5px}
-  footer{padding:34px 0 18px}
-  .fgrid{gap:16px;font-size:11.5px}
-  .fgrid h5{font-size:12.5px}
-  .fbottom{font-size:9.5px;padding-top:12px}
-  .tbl{font-size:11.5px}
-  .tbl th,.tbl td{padding:8px 9px}
-  .search{padding:11px 13px;font-size:13px}
-  .form{gap:9px}
-  label{font-size:9px}
-  input,select,textarea{padding:9px 11px;font-size:12.5px}
-}
-@media(max-width:360px){
-  .mhead .brand-logo{height:26px;max-width:100px}
-  .mhead .brand-txt strong{font-size:9.5px}
-  .mhead .menu a{padding:6px 6px;font-size:9.5px}
-  .pbanner{min-height:170px}
-  .pbanner .container{padding:14px 0}
-  .pbanner h1{font-size:clamp(16px,5vw,20px)}
-  .pbanner .hstat strong{font-size:15px}
-  section{padding:22px 0}
-  .panel{padding:11px 9px}
-}
-
