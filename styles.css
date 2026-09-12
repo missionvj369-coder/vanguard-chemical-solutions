@@ -260,11 +260,11 @@ html{scrollbar-color:#16345E #E7EDF5;scrollbar-width:thin}
 ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#1AA37E,#16345E)}
 @keyframes pagein{from{opacity:0}to{opacity:1}}
 body{animation:pagein .55s ease both}
-@keyframes kb{from{background-size:104% auto}to{background-size:120% auto}}
-.pbanner{animation:kb 26s ease-in-out infinite alternate}
-.pbanner::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(4,10,18,.42) 100%)}
+@keyframes kb{from{background-size:auto 88%}to{background-size:auto 96%}}
+.pbanner{animation:none}
+/* legacy vignette retired — fix-pack owns ::after as left-only art layer */
 .pbanner .container{z-index:2}
-.ticker{-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.ticker{-webkit-mask-image:none;mask-image:none}
 @keyframes sheen{0%{transform:translateX(-130%) skewX(-18deg)}100%{transform:translateX(240%) skewX(-18deg)}}
 .btn{position:relative;overflow:hidden}
 .btn::after{content:"";position:absolute;top:0;bottom:0;width:46%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:translateX(-130%) skewX(-18deg);pointer-events:none}
@@ -282,8 +282,8 @@ body{animation:pagein .55s ease both}
 .panel.open .chips span:nth-child(1){animation-delay:.08s}.panel.open .chips span:nth-child(2){animation-delay:.14s}.panel.open .chips span:nth-child(3){animation-delay:.2s}.panel.open .chips span:nth-child(4){animation-delay:.26s}.panel.open .chips span:nth-child(5){animation-delay:.32s}.panel.open .chips span:nth-child(6){animation-delay:.38s}.panel.open .chips span:nth-child(7){animation-delay:.44s}.panel.open .chips span:nth-child(8){animation-delay:.5s}
 @keyframes chipin{to{opacity:1;transform:none}}
 footer{position:relative}
-footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--navy) 40%,var(--green))}
-.scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--navy),var(--green));z-index:120;transition:width .12s linear}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,.08)}
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:#1E293B;box-shadow:0 0 8px rgba(30,41,59,.6);z-index:120;transition:width .12s linear}
 .to-top{position:fixed;left:22px;bottom:22px;z-index:60;width:46px;height:46px;border-radius:50%;background:#fff;border:1.5px solid var(--line2);box-shadow:var(--shadow-lg);display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(14px);transition:all .35s cubic-bezier(.2,.7,.3,1)}
 .to-top svg{width:18px;height:18px;stroke:var(--navy);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .to-top.show{opacity:1;pointer-events:auto;transform:none}
@@ -294,7 +294,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;b
 .reveal{will-change:opacity,transform}
 .links a.active::after{animation:growline .5s cubic-bezier(.2,.7,.3,1)}
 @keyframes growline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.panel .chips span{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.panel .chips span{opacity:1;transform:none}.pbanner .hero-copy{animation:none}.pbanner::after{animation:none}}
 
 
 /* ===== WHITE HEADER (logo + menu), green only on the image ===== */
@@ -340,13 +340,14 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;b
   .mhead .menu a{padding:7px 8px;font-size:10px}
   .mhead .menu .cta{padding:8px 12px;font-size:10.5px}
 }
-/* pbanner: full-screen hero, white background, faint scene image, content overlaid */
-.pbanner{position:relative;min-height:440px;display:flex;align-items:center;background-size:cover;background-position:center;color:var(--navy);overflow:hidden;background-color:#fff}
-.pbanner::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;opacity:.10}
-.pbanner.banner-home::before{background-image:url("hero-plant.svg")}
-.pbanner.banner-about::before{background-image:url("bg-factory.svg")}
-.pbanner.banner-products::before{background-image:url("bg-lab.svg")}
-.pbanner.banner-contact::before{background-image:url("bg-port.svg")}
+/* legacy pbanner rules retired — FIX PACK below owns all hero layout.
+   (Old full-bleed ::before art + white-bg rules disabled so nothing paints behind right-side text.) */
+/* .pbanner{position:relative;min-height:440px;display:flex;align-items:center;background-size:cover;background-position:center;color:var(--navy);overflow:hidden;background-color:#fff} */
+/* .pbanner::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;opacity:.10} */
+/* .pbanner.banner-home::before{background-image:url("hero-plant.svg")} */
+/* .pbanner.banner-about::before{background-image:url("bg-factory.svg")} */
+/* .pbanner.banner-products::before{background-image:url("bg-lab.svg")} */
+/* .pbanner.banner-contact::before{background-image:url("bg-port.svg")} */
 .pbanner .container{position:relative;z-index:1;width:min(1180px,92%);margin:0 auto;padding:60px 0}
 .pbanner .eyebrow{color:var(--navy);border-color:var(--line);background:var(--bg2)}
 .pbanner .eyebrow::before{background:var(--green)}
@@ -462,3 +463,60 @@ img{max-width:100%}
   .ticker{font-size:9.5px}
   .vals{grid-template-columns:1fr}
 }
+
+/* ===== FIX PACK: Hero overlays/contrast, stat cards, ticker, section rhythm ===== */
+/* 1. Hero — dark elevated base, illustration behind text */
+.pbanner{position:relative;display:flex;align-items:center;overflow:hidden;background-color:#0F172A!important;background-image:none!important;background-size:auto;background-position:left center;color:#fff;min-height:520px;animation:none}
+/* kill legacy full-bleed banner backgrounds (they painted under the text) */
+.banner-home,.banner-about,.banner-products,.banner-contact{background-image:none!important}
+/* solid base panel — right side stays blank, no artwork behind text */
+.pbanner::before{content:"";position:absolute;inset:0;z-index:0;opacity:1;background:#0F172A}
+/* illustration layer: LEFT HALF ONLY, fades to transparent before reaching text */
+.pbanner::after{content:"";position:absolute;top:0;bottom:0;left:0;width:52%;z-index:1;pointer-events:none;opacity:1;background-size:100% 100%;background-repeat:no-repeat;background-position:left center}
+.banner-home::after{background-image:url("hero-plant.svg")}
+.banner-about::after{background-image:url("bg-about-white.svg");opacity:.95}
+.banner-products::after{background-image:url("bg-lab.svg")}
+.banner-contact::after{background-image:url("bg-port.svg")}
+/* hero art/text zones blend seamlessly — no drawn divider */
+/* (mid-hero vertical divider removed) */
+/* text container above graphics */
+.pbanner .container{position:relative;z-index:2;padding-top:4rem;padding-bottom:4rem;display:flex;flex-direction:column;align-items:flex-end}
+/* right-docked copy block on all heroes — blank zone, nothing behind text */
+.pbanner .hero-copy{position:relative;z-index:2;max-width:560px;width:46%;margin-left:auto;text-align:left;background:transparent}
+/* heading + subtext contrast */
+.pbanner h1{color:#FFFFFF!important;line-height:1.2!important;margin-bottom:1.5rem!important;max-width:760px;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.pbanner h1 em{color:#93C5FD;font-style:italic}
+.pbanner .lead,.pbanner .sub{color:#E2E8F0!important;max-width:640px;font-size:16px;font-weight:300;line-height:1.7}
+.pbanner .eyebrow{color:#93C5FD;border-color:rgba(147,197,253,.35);background:rgba(147,197,253,.08)}
+.pbanner .eyebrow::before{background:#93C5FD}
+.pbanner .crumbs{color:#94A3B8}.pbanner .crumbs b{color:#fff}
+/* button row */
+.pbanner .hero-cta{display:flex!important;gap:1rem!important;align-items:center!important;margin-top:2rem!important;flex-wrap:wrap}
+.pbanner .hero-cta .btn-g{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.pbanner .hero-cta .btn-g:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.08);box-shadow:none}
+/* 2. Floating metric cards — no overlap, responsive grid, elevated */
+.pbanner .bstat,.bstat{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))!important;gap:1.5rem!important;margin-top:4rem!important;transform:translateY(0)!important;position:relative;z-index:2;width:100%}
+.pbanner .hstat,.bstat .hstat{background:#1E293B!important;background:linear-gradient(180deg,#1E293B,#0F172A)!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:8px!important;padding:20px 24px!important;text-align:center;box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.pbanner .hstat strong,.bstat .hstat strong{color:#fff!important}
+.pbanner .hstat span,.bstat .hstat span{color:#94A3B8!important}
+/* 3. Ticker + floating enquiry button */
+.ticker{width:100%!important;overflow:hidden!important;padding:1rem 0!important;background:#090D16!important;white-space:nowrap}
+.sticky-cta{position:fixed!important;bottom:1.5rem!important;right:1.5rem!important;z-index:9999!important}
+/* 4. Section rhythm */
+section{padding:5rem 2rem!important}
+section h1,section h2,.content-wrap h2,.div-head h3{margin-bottom:2rem}
+section .kicker{display:inline-block;margin-bottom:.75rem}
+section .sub{margin-bottom:1rem}
+/* ===== IMMERSIVE MOTION (subtle, professional) ===== */
+@keyframes heroDrift{from{transform:translateX(0)}to{transform:translateX(12px)}}
+.pbanner::after{animation:heroDrift 9s ease-in-out infinite alternate;will-change:transform}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.pbanner .hero-copy{animation:fadeUp .7s ease both}
+.pbanner .bstat .hstat{transition:transform .35s ease,box-shadow .35s ease}
+.pbanner .bstat .hstat:nth-child(1){transition-delay:0ms}
+.pbanner .bstat .hstat:nth-child(2){transition-delay:80ms}
+.pbanner .bstat .hstat:nth-child(3){transition-delay:160ms}
+.pbanner .bstat .hstat:nth-child(4){transition-delay:240ms}
+.pbanner .bstat .hstat:hover{transform:translateY(-3px)}
+@media(max-width:980px){.pbanner::after{width:100%;opacity:.18;background-size:cover;background-position:center}.pbanner .container::before{display:none}.pbanner .hero-copy{width:100%;max-width:100%}}
+@media(max-width:620px){.pbanner::after{opacity:.12;width:100%;background-position:center}.pbanner .container{align-items:stretch}.pbanner .hero-cta{flex-direction:column;align-items:stretch}.pbanner .hero-cta a{width:100%;text-align:center}section{padding:3.5rem 1.25rem!important}}

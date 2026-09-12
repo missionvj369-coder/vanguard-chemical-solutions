@@ -1,1 +1,51 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E2A4F"/><stop offset="1" stop-color="#0B2038"/></linearGradient><linearGradient id="st" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8fa9c4"/><stop offset=".5" stop-color="#d7e4f2"/><stop offset="1" stop-color="#7e97b3"/></linearGradient><linearGradient id="lq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1AA37E"/><stop offset="1" stop-color="#0F6B52"/></linearGradient></defs><rect width="1600" height="600" fill="url(#s)"/><g stroke="#7BD9C0" stroke-opacity=".18" stroke-width="1.4" fill="none"><circle cx="180" cy="110" r="26"/><circle cx="228" cy="140" r="15"/><circle cx="152" cy="146" r="12"/><line x1="200" y1="123" x2="216" y2="134"/><line x1="170" y1="126" x2="161" y2="136"/><circle cx="1380" cy="90" r="20"/><circle cx="1416" cy="112" r="11"/><line x1="1396" y1="100" x2="1408" y2="108"/></g><g><rect x="130" y="170" width="40" height="330" rx="6" fill="url(#st)"/><rect x="196" y="110" width="46" height="390" rx="6" fill="url(#st)"/><rect x="268" y="210" width="34" height="290" rx="6" fill="url(#st)"/><rect x="128" y="156" width="44" height="16" fill="#c9d9ea"/><rect x="194" y="96" width="50" height="16" fill="#c9d9ea"/><rect x="266" y="198" width="38" height="14" fill="#c9d9ea"/><g fill="#5f7d9c"><rect x="138" y="220" width="24" height="4"/><rect x="138" y="260" width="24" height="4"/><rect x="138" y="300" width="24" height="4"/><rect x="204" y="170" width="30" height="4"/><rect x="204" y="210" width="30" height="4"/><rect x="204" y="250" width="30" height="4"/><rect x="204" y="290" width="30" height="4"/></g></g><g><rect x="380" y="300" width="220" height="200" rx="100" fill="url(#st)"/><rect x="380" y="336" width="220" height="34" fill="url(#lq)" opacity=".9"/><circle cx="430" cy="470" r="7" fill="#7BD9C0" opacity=".7"/><circle cx="490" cy="470" r="5" fill="#7BD9C0" opacity=".7"/><circle cx="550" cy="470" r="8" fill="#7BD9C0" opacity=".7"/><rect x="478" y="278" width="24" height="24" fill="#c9d9ea"/></g><g><rect x="680" y="240" width="40" height="260" rx="6" fill="url(#st)"/><circle cx="700" cy="205" r="30" fill="url(#st)"/><rect x="760" y="320" width="120" height="180" rx="8" fill="url(#st)"/><rect x="760" y="306" width="120" height="16" rx="6" fill="#c9d9ea"/></g><g stroke-width="7" fill="none"><path class="pf" d="M170 350h210" stroke="#19C08D"/><path d="M310 340v-60" stroke="url(#st)"/><path class="pf" d="M560 380h120" stroke="#19C08D"/></g><g><rect x="960" y="260" width="52" height="240" rx="8" fill="url(#st)"/><rect x="1040" y="200" width="60" height="300" rx="8" fill="url(#st)"/><rect x="1128" y="300" width="44" height="200" rx="6" fill="url(#st)"/><g fill="#5f7d9c"><rect x="1048" y="260" width="44" height="5"/><rect x="1048" y="310" width="44" height="5"/><rect x="1048" y="360" width="44" height="5"/><rect x="1048" y="410" width="44" height="5"/></g></g><rect x="0" y="500" width="1600" height="100" fill="#081B30"/><text x="90" y="556" font-family="Arial" font-size="20" letter-spacing="8" fill="#7BD9C0" opacity=".8">REACTOR BAY - QC LABORATORY - PACKING - CONTAINER YARD - DISPATCH</text></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid meet">
+<!-- HOME = CHEMICAL MANUFACTURING PLANT : 3D-projected milky-white reactors+columns+tank, ALL x<760, right half EMPTY -->
+<defs>
+<linearGradient id="mw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#E9F1F8"/><stop offset="1" stop-color="#B9CBE0"/></linearGradient>
+<linearGradient id="mwD" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCE7F3"/><stop offset="1" stop-color="#8FA6C2"/></linearGradient>
+<linearGradient id="liq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7BD9C0"/><stop offset="1" stop-color="#128C6B"/></linearGradient>
+<radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+</defs>
+<!-- ground shadows -->
+<g fill="url(#sh)" opacity=".55"><ellipse cx="330" cy="528" rx="250" ry="22"/><ellipse cx="560" cy="500" rx="150" ry="14"/></g>
+<!-- back distillation column (3D: front face + side face + top ellipse) -->
+<g>
+<polygon points="150,150 196,132 196,470 150,492" fill="url(#mwD)"/>
+<polygon points="196,132 246,150 246,488 196,470" fill="url(#mw)"/>
+<ellipse cx="198" cy="141" rx="48" ry="14" fill="#FFFFFF"/>
+<ellipse cx="198" cy="141" rx="30" ry="8" fill="#C9D9EA"/>
+<rect x="196" y="220" width="50" height="14" fill="url(#liq)" opacity=".85"/>
+<rect x="196" y="300" width="50" height="14" fill="url(#liq)" opacity=".6"/>
+<rect x="196" y="380" width="50" height="14" fill="url(#liq)" opacity=".4"/>
+</g>
+<!-- front tall column -->
+<g>
+<polygon points="300,110 352,90 352,450 300,472" fill="url(#mwD)"/>
+<polygon points="352,90 406,110 406,472 352,450" fill="url(#mw)"/>
+<ellipse cx="353" cy="100" rx="53" ry="15" fill="#FFFFFF"/>
+<ellipse cx="353" cy="100" rx="33" ry="9" fill="#DCE7F3"/>
+<rect x="352" y="190" width="54" height="16" fill="url(#liq)"/>
+<rect x="352" y="270" width="54" height="16" fill="url(#liq)" opacity=".7"/>
+<rect x="352" y="350" width="54" height="16" fill="url(#liq)" opacity=".45"/>
+<rect x="330" y="60" width="46" height="34" fill="url(#mw)" stroke="#8FA6C2" stroke-width="2"/>
+</g>
+<!-- connecting pipe bridge -->
+<g fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" opacity=".9"><path d="M246 220h70M406 250h60"/></g>
+<g fill="none" stroke="#7BD9C0" stroke-width="5" opacity=".9"><path d="M246 220h70M406 250h60"/></g>
+<!-- horizontal reactor vessel 3D -->
+<g>
+<ellipse cx="560" cy="430" rx="120" ry="60" fill="url(#mw)"/>
+<rect x="440" y="330" width="240" height="100" fill="url(#mw)"/>
+<ellipse cx="560" cy="330" rx="120" ry="34" fill="#FFFFFF"/>
+<ellipse cx="560" cy="330" rx="92" ry="24" fill="url(#mwD)"/>
+<rect x="448" y="368" width="224" height="26" rx="13" fill="url(#liq)" opacity=".9"/>
+<polygon points="470,430 486,470 502,430" fill="#8FA6C2"/>
+<polygon points="618,430 634,470 650,430" fill="#8FA6C2"/>
+<path d="M500 300v-40M560 295v-45M620 300v-40" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+</g>
+<!-- rising bubbles -->
+<g fill="#FFFFFF" opacity=".85"><circle cx="560" cy="210" r="9"/><circle cx="592" cy="170" r="7"/><circle cx="622" cy="128" r="5"/><circle cx="250" cy="80" r="6"/></g>
+<!-- base platform -->
+<rect x="90" y="500" width="620" height="16" rx="8" fill="#FFFFFF" opacity=".9"/>
+</svg>
