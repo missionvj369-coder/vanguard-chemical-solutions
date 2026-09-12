@@ -101,3 +101,5 @@ render();
   var ob=new IntersectionObserver(function(en){for(var j=0;j<en.length;j++){if(en[j].isIntersecting){en[j].target.classList.add('in');ob.unobserve(en[j].target)}}},{threshold:.1});
   for(var k=0;k<els.length;k++){ob.observe(els[k])}
 })();
+/* Safety net: never leave content hidden if reveal observer fails (esp. mobile) */
+setTimeout(function(){var r=document.querySelectorAll('.reveal:not(.in)');for(var i=0;i<r.length;i++){r[i].classList.add('in')}},2500);
