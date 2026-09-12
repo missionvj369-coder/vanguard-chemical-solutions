@@ -294,3 +294,68 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;b
 .links a.active::after{animation:growline .5s cubic-bezier(.2,.7,.3,1)}
 @keyframes growline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.panel .chips span{opacity:1;transform:none}}
+
+/* ===== MINIMAL HEADER ===== */
+.mhead{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--hairline)}
+.mhead-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+.mhead .brand{display:flex;align-items:center;gap:14px;min-width:0}
+.mhead .brand-logo{height:46px;width:auto;display:block;max-width:280px;object-fit:contain;pointer-events:none}
+.mhead .brand.has-logo .mark,.mhead .brand.has-logo .brand-txt{display:none}
+.mhead .mark{width:40px;height:40px;border-radius:8px;border:1.5px solid var(--line2);display:grid;place-items:center;font-family:'Manrope',sans-serif;font-size:20px;color:var(--navy);background:linear-gradient(160deg,#fff,var(--bg2))}
+.mhead .brand-txt strong{display:block;font-family:'Manrope',sans-serif;letter-spacing:.14em;font-size:15px;font-weight:500;color:var(--navy);white-space:nowrap}
+.mhead .brand-txt span{display:block;font-size:9px;letter-spacing:.42em;color:var(--green);font-weight:600;text-transform:uppercase;white-space:nowrap}
+.mhead .btn{margin-left:auto}
+/* Blissful grey scene tint — neutralises the blue */
+.pbanner::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(120,128,136,.78) 0%,rgba(150,158,166,.62) 42%,rgba(176,182,188,.30) 100%)}
+.pbanner{background-color:#8A929A;background-blend-mode:overlay}
+.pbanner.banner-home{background-image:url("hero-plant.svg")}
+.pbanner.banner-about{background-image:url("bg-factory.svg")}
+.pbanner.banner-products{background-image:url("bg-lab.svg")}
+.pbanner.banner-contact{background-image:url("bg-port.svg")}
+.pbanner .eyebrow{color:#E7EDF5;border-color:rgba(231,237,245,.55);background:rgba(255,255,255,.06)}
+.pbanner .eyebrow::before{background:#E7EDF5}
+.pbanner h1 em{color:#E7EDF5}
+.pbanner .lead,.pbanner .sub{color:rgba(245,247,250,.86)}
+.pbanner .hstat{background:rgba(255,255,255,.07);backdrop-filter:blur(4px)}
+.pbanner .hstat strong{color:#fff}
+.pbanner .hstat span{color:#E7EDF5}
+.hero-art{background:linear-gradient(160deg,#8A929A,#6E7782 55%,#5C656E)!important}
+.hero-art::before{opacity:.4}
+.tabbtn.active,.fbtn.active{background:#6E7782!important;color:#fff!important;box-shadow:0 6px 18px rgba(60,68,76,.32)!important}
+.div-icon{background:linear-gradient(135deg,#6E7782,#4E565E)!important}
+.cta-band{background:linear-gradient(120deg,#6E7782 0%,#545C64 55%,#3E474F 100%)!important}
+.cta-band .kicker{color:#BFD0D8!important}
+.sticky-cta::before{background:#BFD0D8}
+@media(max-width:980px){
+  .mhead-inner{flex-wrap:wrap;justify-content:space-between;padding:12px 0}
+  .mhead .brand-txt strong{font-size:13px}
+  .mhead .brand-txt span{font-size:8.5px}
+  .mhead .btn{padding:12px 22px;font-size:11px}
+  .pbanner{min-height:320px}.pbanner .container{padding:40px 0}
+  .pbanner h1{font-size:clamp(26px,4vw,40px)}
+  .pbanner .lead{font-size:14px}
+  .tabs-outer{justify-content:center}
+}
+@media(max-width:620px){
+  .mhead{position:relative}
+  .mhead-inner{flex-direction:column;align-items:stretch;gap:10px;padding:10px 0}
+  .mhead .brand{display:flex;justify-content:center}
+  .mhead .brand-logo{height:38px;max-width:180px}
+  .mhead .brand-txt strong{font-size:12px}
+  .mhead .btn{display:block;margin:0;padding:13px;border-radius:8px}
+  .pbanner{min-height:240px}.pbanner .container{padding:26px 0}
+  .pbanner h1{font-size:clamp(22px,5vw,30px);margin-top:8px}
+  .pbanner .lead{font-size:13px;max-width:100%}
+  .pbanner .bstat,.pbanner .hero-cta{flex-direction:column;align-items:flex-start}
+  .pbanner .bstat>div{width:100%}
+  .panel{padding:22px}
+  .chips span{font-size:11px;padding:6px 13px}
+  .mini-note{font-size:11px;padding:8px 12px}
+  .tabbar,.filters{width:100%;flex-direction:column}
+  .tabbtn,.fbtn{width:100%;text-align:left;padding:12px 16px}
+  .tabbtn.active,.fbtn.active{text-align:left}
+  section{padding:40px 0}
+  .compact{padding-top:26px}
+  .tabbar{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tabbar::-webkit-scrollbar{display:none}
+}
