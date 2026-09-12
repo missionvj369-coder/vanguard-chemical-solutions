@@ -1,0 +1,21 @@
+# === Vanguard Chemical Solutions — Git ignore ===
+# Local dev server
+lite-server*
+
+# Node tooling (if any added later)
+node_modules/
+npm-debug.log*
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Generated preview / cache copies (never commit query-param files)
+*.r=*.html
+
+# Temp powershell scripts used only by build assistant
+fix-ticker.ps1
+add-engine.ps1

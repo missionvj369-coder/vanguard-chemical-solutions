@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /*.log$
+
+Sitemap: https://www.vanguardchemicals.in/sitemap.xml
