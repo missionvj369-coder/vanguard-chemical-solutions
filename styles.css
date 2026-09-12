@@ -295,67 +295,290 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;b
 @keyframes growline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.panel .chips span{opacity:1;transform:none}}
 
-/* ===== MINIMAL HEADER ===== */
-.mhead{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--hairline)}
-.mhead-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
-.mhead .brand{display:flex;align-items:center;gap:14px;min-width:0}
-.mhead .brand-logo{height:46px;width:auto;display:block;max-width:280px;object-fit:contain;pointer-events:none}
+
+/* ===== HEADER OVERRIDE — green background (exact logo green #009678), logo + menu, no enquiry in header ===== */
+.mhead{position:sticky;top:0;z-index:70;background:#009678;color:#fff;border-bottom:1px solid rgba(0,0,0,.10)}
+.mhead-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:18px;flex-wrap:nowrap}
+.mhead .brand{display:flex;align-items:center;gap:14px;min-width:0;flex-shrink:0}
+.mhead .brand-logo{height:42px;width:auto;display:block;max-width:260px;object-fit:contain;pointer-events:none}
 .mhead .brand.has-logo .mark,.mhead .brand.has-logo .brand-txt{display:none}
-.mhead .mark{width:40px;height:40px;border-radius:8px;border:1.5px solid var(--line2);display:grid;place-items:center;font-family:'Manrope',sans-serif;font-size:20px;color:var(--navy);background:linear-gradient(160deg,#fff,var(--bg2))}
-.mhead .brand-txt strong{display:block;font-family:'Manrope',sans-serif;letter-spacing:.14em;font-size:15px;font-weight:500;color:var(--navy);white-space:nowrap}
-.mhead .brand-txt span{display:block;font-size:9px;letter-spacing:.42em;color:var(--green);font-weight:600;text-transform:uppercase;white-space:nowrap}
-.mhead .btn{margin-left:auto}
-/* Blissful grey scene tint — neutralises the blue */
-.pbanner::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(120,128,136,.78) 0%,rgba(150,158,166,.62) 42%,rgba(176,182,188,.30) 100%)}
-.pbanner{background-color:#8A929A;background-blend-mode:overlay}
+.mhead .mark{width:38px;height:38px;border-radius:8px;border:1.5px solid rgba(255,255,255,.55);display:grid;place-items:center;font-family:'Manrope',sans-serif;font-size:18px;color:#fff;background:rgba(255,255,255,.10)}
+.mhead .brand-txt strong{display:block;font-family:'Manrope',sans-serif;letter-spacing:.12em;font-size:14px;font-weight:600;color:#fff;white-space:nowrap}
+.mhead .brand-txt span{display:block;font-size:8.5px;letter-spacing:.42em;color:rgba(255,255,255,.85);font-weight:600;text-transform:uppercase;white-space:nowrap}
+.mhead .menu{display:flex;gap:6px;align-items:center;margin-left:auto;flex-wrap:nowrap}
+.mhead .menu a{font-size:12px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:#fff;text-decoration:none;padding:8px 14px;border-radius:8px;transition:background .2s,color .2s;white-space:nowrap}
+.mhead .menu a:hover{background:rgba(255,255,255,.18)}
+.mhead .menu a.active{background:rgba(255,255,255,.20)}
+.mhead .menu .cta{margin-left:8px;background:#fff;color:#009678;font-weight:700;padding:9px 18px;border-radius:8px;white-space:nowrap}
+.mhead .menu .cta:hover{background:#e6f4f0;color:#007a61}
+.mhead .burger{display:none;background:transparent;border:1px solid rgba(255,255,255,.55);color:#fff;border-radius:8px;padding:6px 10px;font-size:14px;letter-spacing:.08em;cursor:pointer;margin-left:6px}
+@media(max-width:980px){
+  .mhead-inner{padding:10px 0;gap:10px}
+  .mhead .brand-txt strong{font-size:12px;letter-spacing:.10em}
+  .mhead .brand-txt span{font-size:7.5px;letter-spacing:.34em}
+  .mhead .brand-logo{height:38px;max-width:200px}
+  .mhead .menu{gap:2px}
+  .mhead .menu a{padding:8px 10px;font-size:10.5px}
+  .mhead .burger{display:block}
+  .mhead .menu.mobile-status{position:absolute;top:100%;left:0;right:0;background:#009678;padding:14px 16px;flex-direction:column;gap:6px;box-shadow:0 18px 34px rgba(0,0,0,.28);z-index:60}
+  .mhead .menu.mobile-status a{padding:12px 14px;font-size:12.5px;width:100%;text-align:center;border-radius:8px;white-space:normal}
+  .mhead .menu.mobile-status .cta{width:100%;text-align:center;margin-top:8px}
+}
+@media(max-width:620px){
+  .mhead{position:relative}
+  .mhead-inner{flex-wrap:nowrap}
+  .mhead .brand-logo{height:34px;max-width:150px}
+  .mhead .brand-txt strong{font-size:11px}
+  .mhead .burger{margin-left:auto}
+}
+@media(max-width:380px){
+  .mhead .brand-logo{height:30px;max-width:120px}
+  .mhead .brand-txt strong{font-size:10.5px}
+  .mhead .brand-txt span{display:none}
+  .mhead .menu a{padding:7px 8px;font-size:10px}
+  .mhead .menu .cta{padding:8px 12px;font-size:10.5px}
+}
+/* pbanner: keep scene imagery, soft green overlay (blue gone) */
+.pbanner{position:relative;min-height:380px;display:flex;align-items:center;background-size:cover;background-position:center;color:#fff;overflow:hidden}
+.pbanner::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,80,65,.55) 0%,rgba(0,96,80,.35) 45%,rgba(40,90,80,.18) 100%)}
 .pbanner.banner-home{background-image:url("hero-plant.svg")}
 .pbanner.banner-about{background-image:url("bg-factory.svg")}
 .pbanner.banner-products{background-image:url("bg-lab.svg")}
 .pbanner.banner-contact{background-image:url("bg-port.svg")}
-.pbanner .eyebrow{color:#E7EDF5;border-color:rgba(231,237,245,.55);background:rgba(255,255,255,.06)}
-.pbanner .eyebrow::before{background:#E7EDF5}
-.pbanner h1 em{color:#E7EDF5}
-.pbanner .lead,.pbanner .sub{color:rgba(245,247,250,.86)}
-.pbanner .hstat{background:rgba(255,255,255,.07);backdrop-filter:blur(4px)}
+.pbanner .container{position:relative;z-index:1;width:min(1180px,92%);margin:0 auto;padding:54px 0}
+.pbanner .eyebrow{color:#EAF6F2;border-color:rgba(234,246,242,.55);background:rgba(255,255,255,.07)}
+.pbanner .eyebrow::before{background:#EAF6F2}
+.pbanner h1 em{color:#EAF6F2}
+.pbanner .lead,.pbanner .sub{color:rgba(245,248,246,.90)}
+.pbanner .hstat{background:rgba(255,255,255,.08);backdrop-filter:blur(4px)}
 .pbanner .hstat strong{color:#fff}
-.pbanner .hstat span{color:#E7EDF5}
-.hero-art{background:linear-gradient(160deg,#8A929A,#6E7782 55%,#5C656E)!important}
-.hero-art::before{opacity:.4}
-.tabbtn.active,.fbtn.active{background:#6E7782!important;color:#fff!important;box-shadow:0 6px 18px rgba(60,68,76,.32)!important}
-.div-icon{background:linear-gradient(135deg,#6E7782,#4E565E)!important}
-.cta-band{background:linear-gradient(120deg,#6E7782 0%,#545C64 55%,#3E474F 100%)!important}
-.cta-band .kicker{color:#BFD0D8!important}
-.sticky-cta::before{background:#BFD0D8}
+.pbanner .hstat span{color:#EAF6F2}
 @media(max-width:980px){
-  .mhead-inner{flex-wrap:wrap;justify-content:space-between;padding:12px 0}
-  .mhead .brand-txt strong{font-size:13px}
-  .mhead .brand-txt span{font-size:8.5px}
-  .mhead .btn{padding:12px 22px;font-size:11px}
-  .pbanner{min-height:320px}.pbanner .container{padding:40px 0}
-  .pbanner h1{font-size:clamp(26px,4vw,40px)}
-  .pbanner .lead{font-size:14px}
-  .tabs-outer{justify-content:center}
+  .pbanner{min-height:300px}
+  .pbanner .container{padding:38px 0}
+  .pbanner h1{font-size:clamp(24px,4vw,36px)}
+  .pbanner .lead{font-size:13.5px}
+}
+/* ===== IMAGE + ALL-DEVICE LAYOUT FIXES (mobile-first, no overflow) ===== */
+html,body{overflow-x:hidden}
+body{min-width:0}
+.container{min-width:0}
+img,max-width:100%!not(exclamation){max-width:100%}
+.pbanner .container{min-width:0}
+.pbanner{overflow:hidden}
+.pbanner .hstat> div{min-width:0}
+.pbanner .hero-cta{flex-wrap:wrap;gap:10px}
+.pbanner .hero-cta a{min-width:0;flex:1 1 auto}
+.pbanner .bstat{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%}
+.pbanner .bstat> div{min-width:0;text-align:center;padding:6px 0}
+.pbanner .bstat strong{display:block;font-size:clamp(24px,4vw,38px);line-height:1.05}
+.pbanner .bstat span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-top:6px;color:#EAF6F2}
+.hero-art svg{width:100%;height:auto;display:block}
+.pbanner .eyebrow,.pbanner h1,.pbanner .lead,.pbanner .sub{overflow-wrap:break-word;word-break:break-word}
+.tabbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-start}
+.tabbtn{white-space:nowrap}
+.panel .chips,.panel .mini-note{overflow-wrap:break-word}
+.panel .chips span{white-space:nowrap}
+.pgrid,.vals,.fgrid,.cat-grid,.contact-grid,.split,.hero-grid,.cards3,.steps,.strip-inner{overflow:hidden}
+.pc card,.info-card,.cta-band{flex:1 1 auto;min-width:0}
+.pbanner .container .row-flex{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.pbanner .container .row-flex>*{min-width:0;flex:1 1 240px}
+/* mobile menu (burger) — ensure it never overflows & closes cleanly */
+.mhead{position:sticky;top:0;z-index:80}
+.mhead-inner{position:relative}
+.mhead .menu.mobile-status{overflow:hidden}
+/* small-touch: ensure CTA text doesn't overflow green header */
+.mhead .menu a,.mhead .menu .cta{font-size:clamp(10px,1.4vw,12.5px)}
+@media(max-width:980px){
+  .pbanner{min-height:290px}
+  .pbanner .container{padding:34px 0}
+  .pbanner h1{font-size:clamp(22px,4.4vw,34px)}
+  .pbanner .lead{font-size:13px}
+  .pbanner .bstat{grid-template-columns:repeat(2,1fr);gap:10px}
+  .pbanner .bstat> div{padding:4px 0}
+  .pbanner .hero-cta a{padding:13px 20px;font-size:11px}
+  .mhead .brand-logo{height:38px;max-width:200px}
+  .mhead .brand-txt strong{font-size:12px}
+  .mhead .brand-txt span{font-size:7.5px}
+  .mhead .menu a{padding:8px 10px;font-size:10.5px}
 }
 @media(max-width:620px){
   .mhead{position:relative}
-  .mhead-inner{flex-direction:column;align-items:stretch;gap:10px;padding:10px 0}
-  .mhead .brand{display:flex;justify-content:center}
-  .mhead .brand-logo{height:38px;max-width:180px}
-  .mhead .brand-txt strong{font-size:12px}
-  .mhead .btn{display:block;margin:0;padding:13px;border-radius:8px}
-  .pbanner{min-height:240px}.pbanner .container{padding:26px 0}
-  .pbanner h1{font-size:clamp(22px,5vw,30px);margin-top:8px}
-  .pbanner .lead{font-size:13px;max-width:100%}
-  .pbanner .bstat,.pbanner .hero-cta{flex-direction:column;align-items:flex-start}
-  .pbanner .bstat>div{width:100%}
-  .panel{padding:22px}
-  .chips span{font-size:11px;padding:6px 13px}
-  .mini-note{font-size:11px;padding:8px 12px}
-  .tabbar,.filters{width:100%;flex-direction:column}
-  .tabbtn,.fbtn{width:100%;text-align:left;padding:12px 16px}
-  .tabbtn.active,.fbtn.active{text-align:left}
-  section{padding:40px 0}
-  .compact{padding-top:26px}
-  .tabbar{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .mhead-inner{flex-wrap:nowrap;justify-content:space-between}
+  .mhead .brand-logo{height:34px;max-width:150px}
+  .mhead .brand-txt strong{font-size:11px}
+  .mhead .burger{margin-left:auto}
+  .pbanner{min-height:240px}
+  .pbanner .container{padding:24px 0}
+  .pbanner h1{font-size:clamp(20px,5.2vw,28px);margin-top:6px}
+  .pbanner .lead{font-size:12.5px;max-width:100%}
+  .pbanner .bstat{grid-template-columns:repeat(2,1fr);gap:8px}
+  .pbanner .bstat strong{font-size:22px}
+  .pbanner .bstat> div{padding:2px 0}
+  .pbanner .hero-cta{flex-direction:column;gap:10px}
+  .pbanner .hero-cta a{width:100%;text-align:center}
+  .pbanner .eyebrow{font-size:10px}
+  .tabbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   .tabbar::-webkit-scrollbar{display:none}
+  .tabbtn{padding:11px 14px;font-size:10.5px;white-space:nowrap}
+  .panel{padding:18px}
+  .panel .chips span{padding:6px 12px;font-size:11px}
+  .panel .mini-note{font-size:11px;padding:8px 12px}
+  .panel .chips{justify-content:center}
+  .pgrid{grid-template-columns:1fr;gap:14px}
+  .fgrid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .cta-band{flex-direction:column;align-items:flex-start;padding:28px;text-align:left}
+  .cta-band h2{font-size:22px}
+  .cta-band .btn{margin-top:14px;width:100%;text-align:center}
+  .info-card,.pcard{padding:20px}
+  .pcard h3{font-size:18px}
 }
+@media(max-width:400px){
+  .mhead .brand-logo{height:30px;max-width:120px}
+  .mhead .brand-txt strong{font-size:10.5px}
+  .mhead .brand-txt span{display:none}
+  .mhead .menu a{padding:7px 8px;font-size:10px}
+  .mhead .menu .cta{padding:8px 12px;font-size:10.5px}
+  .pbanner{min-height:210px}
+  .pbanner .container{padding:18px 0}
+  .pbanner h1{font-size:20px}
+  .pbanner .lead{font-size:12px}
+  .pbanner .bstat strong{font-size:18px}
+}
+
+@media(max-width:620px){
+  .pbanner{min-height:240px}
+  .pbanner .container{padding:26px 0}
+  .pbanner h1{font-size:clamp(20px,6vw,28px);margin-top:6px}
+  .pbanner .lead,.pbanner .sub{font-size:12.5px;max-width:100%}
+  .pbanner .hero-cta,.pbanner .bstat{flex-direction:column;align-items:flex-start}
+  .pbanner .bstat>div{width:100%}
+  .panel{padding:18px 16px}
+  .div-head{gap:10px}
+  .div-icon{width:40px;height:40px}
+  .div-icon svg{width:22px;height:22px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chips span{padding:5px 11px;font-size:10.5px}
+  .mini-note{font-size:11px;padding:8px 12px}
+  .tabbar,.filters{width:100%;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tabbar::-webkit-scrollbar,.filters::-webkit-scrollbar{display:none}
+  .tabbtn,.fbtn{padding:9px 14px;font-size:10.5px;white-space:nowrap;flex:none;width:auto}
+  .split,.hero-grid,.contact-grid{grid-template-columns:1fr!important}
+  .cards3,.cat-grid,.pgrid,.steps,.form,.strip-inner,.fgrid,.vals{grid-template-columns:1fr!important}
+  section{padding:34px 0}
+  .compact{padding-top:22px}
+  .cta-band{padding:26px 22px;flex-direction:column;align-items:flex-start;gap:18px}
+  .cta-band h2{font-size:22px}
+  footer{padding:44px 0 24px}
+  .fgrid{gap:22px;font-size:12.5px}
+  .fbottom{font-size:10.5px}
+  .tabbtn.active,.fbtn.active{background:#005A48!important;color:#fff!important}
+/* ===== IMAGE + MOBILE LAYOUT LOCK (all devices) ===== */
+.mhead .brand-logo,.pbanner svg,.hero-art svg,.pcard img,.val img,.info-card img,.brand-logo{max-width:100%;height:auto;display:block}
+.pbanner{overflow:visible}
+.pbanner .container{overflow:visible}
+.hero-art{overflow:hidden}
+.pbanner.banner-home,.pbanner.banner-about,.pbanner.banner-products,.pbanner.banner-contact{background-size:cover;background-position:center}
+@media(max-width:480px){
+  .pbanner{min-height:200px}
+  .pbanner .container{padding:20px 0}
+  .pbanner h1{font-size:clamp(18px,5.5vw,24px)}
+  .pbanner .lead,.pbanner .sub{font-size:11.5px;line-height:1.55}
+  .pbanner .hstat strong{font-size:18px}
+  .pbanner .hstat span{font-size:10px}
+  .mhead-inner{gap:6px;padding:8px 0}
+  .mhead .brand-logo{height:30px;max-width:120px}
+  .mhead .brand-txt strong{font-size:10px;letter-spacing:.08em}
+  .mhead .menu a{padding:7px 8px;font-size:10px}
+  .mhead .burger{padding:5px 8px;font-size:12px}
+  .mhead .menu.mobile-status{padding:10px 12px;gap:4px}
+  .mhead .menu.mobile-status a{padding:10px 12px;font-size:11.5px}
+  .panel{padding:14px 12px}
+  .chips span{padding:4px 9px;font-size:10px}
+  .mini-note{font-size:10.5px;padding:7px 10px}
+  .div-icon{width:34px;height:34px}
+  .div-icon svg{width:19px;height:19px}
+  section{padding:28px 0}
+  .compact{padding-top:18px}
+  .cta-band{padding:20px 16px;gap:14px}
+  .cta-band h2{font-size:19px}
+  .cta-band .btn{padding:11px 18px;font-size:10.5px}
+  footer{padding:34px 0 18px}
+  .fgrid{gap:16px;font-size:11.5px}
+  .fgrid h5{font-size:12.5px}
+  .fbottom{font-size:9.5px;padding-top:12px}
+  .tbl{font-size:11.5px}
+  .tbl th,.tbl td{padding:8px 9px}
+  .search{padding:11px 13px;font-size:13px}
+  .form{gap:9px}
+  label{font-size:9px}
+  input,select,textarea{padding:9px 11px;font-size:12.5px}
+}
+@media(max-width:360px){
+  .mhead .brand-logo{height:26px;max-width:100px}
+  .mhead .brand-txt strong{font-size:9.5px}
+  .mhead .menu a{padding:6px 6px;font-size:9.5px}
+  .pbanner{min-height:170px}
+  .pbanner .container{padding:14px 0}
+  .pbanner h1{font-size:clamp(16px,5vw,20px)}
+  .pbanner .hstat strong{font-size:15px}
+  section{padding:22px 0}
+  .panel{padding:11px 9px}
+}
+
+/* ===== IMAGE + MOBILE LAYOUT LOCK (all devices) ===== */
+
+.mhead .brand-logo,.pbanner svg,.hero-art svg,.pcard img,.val img,.info-card img,.brand-logo{max-width:100%;height:auto;display:block}
+.pbanner{overflow:visible}
+.pbanner .container{overflow:visible}
+.hero-art{overflow:hidden}
+.pbanner.banner-home,.pbanner.banner-about,.pbanner.banner-products,.pbanner.banner-contact{background-size:cover;background-position:center}
+@media(max-width:480px){
+  .pbanner{min-height:200px}
+  .pbanner .container{padding:20px 0}
+  .pbanner h1{font-size:clamp(18px,5.5vw,24px)}
+  .pbanner .lead,.pbanner .sub{font-size:11.5px;line-height:1.55}
+  .pbanner .hstat strong{font-size:18px}
+  .pbanner .hstat span{font-size:10px}
+  .mhead-inner{gap:6px;padding:8px 0}
+  .mhead .brand-logo{height:30px;max-width:120px}
+  .mhead .brand-txt strong{font-size:10px;letter-spacing:.08em}
+  .mhead .menu a{padding:7px 8px;font-size:10px}
+  .mhead .burger{padding:5px 8px;font-size:12px}
+  .mhead .menu.mobile-status{padding:10px 12px;gap:4px}
+  .mhead .menu.mobile-status a{padding:10px 12px;font-size:11.5px}
+  .panel{padding:14px 12px}
+  .chips span{padding:4px 9px;font-size:10px}
+  .mini-note{font-size:10.5px;padding:7px 10px}
+  .div-icon{width:34px;height:34px}
+  .div-icon svg{width:19px;height:19px}
+  section{padding:28px 0}
+  .compact{padding-top:18px}
+  .cta-band{padding:20px 16px;gap:14px}
+  .cta-band h2{font-size:19px}
+  .cta-band .btn{padding:11px 18px;font-size:10.5px}
+  footer{padding:34px 0 18px}
+  .fgrid{gap:16px;font-size:11.5px}
+  .fgrid h5{font-size:12.5px}
+  .fbottom{font-size:9.5px;padding-top:12px}
+  .tbl{font-size:11.5px}
+  .tbl th,.tbl td{padding:8px 9px}
+  .search{padding:11px 13px;font-size:13px}
+  .form{gap:9px}
+  label{font-size:9px}
+  input,select,textarea{padding:9px 11px;font-size:12.5px}
+}
+@media(max-width:360px){
+  .mhead .brand-logo{height:26px;max-width:100px}
+  .mhead .brand-txt strong{font-size:9.5px}
+  .mhead .menu a{padding:6px 6px;font-size:9.5px}
+  .pbanner{min-height:170px}
+  .pbanner .container{padding:14px 0}
+  .pbanner h1{font-size:clamp(16px,5vw,20px)}
+  .pbanner .hstat strong{font-size:15px}
+  section{padding:22px 0}
+  .panel{padding:11px 9px}
+}
+
