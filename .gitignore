@@ -19,3 +19,14 @@ desktop.ini
 # Temp powershell scripts used only by build assistant
 fix-ticker.ps1
 add-engine.ps1
+
+# Dev utility scripts and artifacts
+*.py
+*_audit.html
+audit*.log
+interact*.log
+interact_out.txt
+verify*.log
+verify_out.txt
+dom.dump
+probe*.txt
