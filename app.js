@@ -42,6 +42,16 @@
     return 'mailto:' + SALES_MAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body || '');
   }
 
+  /* ---------- Cross-browser scroll utilities ---------- */
+  var scrollY = function () { return window.scrollY || window.pageYOffset || 0; };
+  var scrollTo = function (y, behavior) {
+    if (behavior === 'smooth' && window.scrollTo && window.scrollTo.bind) {
+      try { window.scrollTo({ top: y, behavior: 'smooth' }); return; } catch (e) {}
+    }
+    window.scrollTo(0, y);
+  };
+  var getHeaderHeight = function () { return document.querySelector('.site-header') ? document.querySelector('.site-header').offsetHeight || 72 : 72; };
+
   /* ---------- PRODUCT DATA: loaded from products-data.js when available ---------- */
   function getProducts() {
     if (window.VC_PRODUCTS && window.VC_PRODUCTS.length) return window.VC_PRODUCTS;
@@ -54,6 +64,7 @@
 
   /* ==========================================================================
      1.  SITE HEADER — sticky nav, mobile panel, scroll behaviour
+     Optimized for Safari iOS 8+ and Android
      ========================================================================== */
   function initHeader() {
     var header = $('.site-header');
@@ -63,46 +74,103 @@
     var closeBtn = $('.mobile-close');
     if (!header || !burger || !panel || !nav) return;
     var body = document.body;
+    var isIOS = /(iPhone|iPad|iPod)/i.test(navigator.userAgent);
+    var isAndroid = /Android/i.test(navigator.userAgent);
+    var isMobile = isIOS || isAndroid;
 
+    // Prevent body scroll when mobile nav is open (iOS Safari fix)
     function openMobile() {
       panel.setAttribute('open', '');
       nav.setAttribute('open', '');
       burger.setAttribute('aria-expanded', 'true');
       AD('no-scroll', body);
+      // iOS Safari: prevent overscroll
+      if (isIOS) {
+        body.style.position = 'fixed';
+        body.style.width = '100%';
+        body.style.top = '-' + scrollY() + 'px';
+      }
     }
     function closeMobile() {
       KZ('open', panel);
       KZ('open', nav);
       burger.setAttribute('aria-expanded', 'false');
       KZ('no-scroll', body);
+      // iOS Safari: restore body position and scroll position
+      if (isIOS) {
+        body.style.position = '';
+        body.style.width = '';
+        body.style.top = '';
+        window.scrollTo(0, parseInt(body.style.top || 0) * -1 || 0);
+      }
     }
-    burger.addEventListener('click', function (e) {
+
+    // Use touch events for better iOS responsiveness
+    var openMobileHandler = function (e) {
+      e.preventDefault();
       e.stopPropagation();
       if (panel.hasAttribute('open')) closeMobile(); else openMobile();
-    });
-    if (closeBtn) closeBtn.addEventListener('click', closeMobile);
+    };
+    burger.addEventListener('touchstart', openMobileHandler, { passive: true });
+    burger.addEventListener('click', openMobileHandler);
+
+    if (closeBtn) {
+      closeBtn.addEventListener('touchstart', function (e) { e.preventDefault(); closeMobile(); }, { passive: true });
+      closeBtn.addEventListener('click', closeMobile);
+    }
     panel.addEventListener('click', function (e) { if (e.target === panel) closeMobile(); });
+    panel.addEventListener('touchstart', function (e) { if (e.target === panel) closeMobile(); }, { passive: true });
+
     nav.addEventListener('click', function (e) {
       var a = e.target.closest ? e.target.closest('a') : null;
       if (a && (a.getAttribute('href') === '#' || a.getAttribute('data-close') === '1')) closeMobile();
     });
+    nav.addEventListener('touchstart', function (e) {
+      var a = e.target.closest ? e.target.closest('a') : null;
+      if (a && (a.getAttribute('href') === '#' || a.getAttribute('data-close') === '1')) {
+        e.preventDefault();
+        closeMobile();
+      }
+    }, { passive: true });
+
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && panel.hasAttribute('open')) closeMobile();
     });
 
-    var ticking = false, lastY = 0;
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          var y = window.scrollY || window.pageYOffset;
-          if (y > 24 && y > lastY) AD('is-solid', header);
-          else if (y <= 24) KZ('is-solid', header);
-          else if (y < lastY) KZ('is-solid', header);
-          lastY = y; ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
+    // Header shadow on scroll - optimized for mobile
+    var ticking = false, lastY = 0, headerHeight = getHeaderHeight();
+    var updateHeader = function () {
+      var y = scrollY();
+      if (y > 20 && y > lastY) AD('is-solid', header);
+      else if (y <= 20) KZ('is-solid', header);
+      else if (y < lastY) KZ('is-solid', header);
+      lastY = y;
+      ticking = false;
+    };
+
+    // Use throttled scroll for better mobile performance
+    if (isMobile) {
+      var lastScrollTime = 0;
+      window.addEventListener('scroll', function () {
+        var now = Date.now();
+        if (now - lastScrollTime > 50) { // Throttle to 20fps on mobile
+          if (!ticking) {
+            window.requestAnimationFrame(updateHeader);
+            ticking = true;
+          }
+          lastScrollTime = now;
+        }
+      }, { passive: true });
+      // Recalculate header height on resize
+      window.addEventListener('resize', function () { headerHeight = getHeaderHeight(); }, { passive: true });
+    } else {
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(updateHeader);
+          ticking = true;
+        }
+      }, { passive: true });
+    }
   }
 
   /* ==========================================================================
@@ -296,54 +364,103 @@
   };
 
   /* ==========================================================================
-     4.  SCROLL PROGRESS + BACK TO TOP
+     4.  SCROLL PROGRESS + BACK TO TOP - iOS & Android optimized
      ========================================================================== */
   function initScrollUI() {
     var progress = $('.scroll-progress');
     var toTop = $('.to-top');
     if (!progress && !toTop) return;
+
+    var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    var ticking = false;
+
     function onScroll() {
-      var h = document.documentElement;
-      var scroll = (window.scrollY || window.pageYOffset) || 0;
-      var max = (h.scrollHeight - h.clientHeight) || 1;
-      if (progress) progress.style.width = Math.min(100, (scroll / max) * 100) + '%';
-      if (toTop) { if (scroll > 600) AD('show', toTop); else KZ('show', toTop); }
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        var h = document.documentElement;
+        var scroll = scrollY();
+        var max = (h.scrollHeight - h.clientHeight) || 1;
+        var percentage = Math.min(100, (scroll / max) * 100);
+
+        if (progress) {
+          progress.style.width = percentage + '%';
+        }
+        if (toTop) {
+          if (scroll > 500) AD('show', toTop);
+          else KZ('show', toTop);
+        }
+        ticking = false;
+      });
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Throttle scroll events on mobile for performance
+    if (isMobile) {
+      var lastScrollTime = 0;
+      window.addEventListener('scroll', function () {
+        var now = Date.now();
+        if (now - lastScrollTime > 40) { // ~25fps on mobile
+          onScroll();
+          lastScrollTime = now;
+        }
+      }, { passive: true });
+    } else {
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
     window.addEventListener('resize', onScroll, { passive: true });
     onScroll();
+
     if (toTop) {
+      toTop.addEventListener('touchstart', function (e) {
+        e.preventDefault();
+        scrollTo(0, REDUCED ? 'auto' : 'smooth');
+      }, { passive: true });
       toTop.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: REDUCED ? 'auto' : 'smooth' });
+        scrollTo(0, REDUCED ? 'auto' : 'smooth');
       });
     }
   }
 
   /* ==========================================================================
      5.  REVEAL ON SCROLL (safe: never leaves content hidden)
+     Uses IntersectionObserver with fallback for older mobile browsers
      ========================================================================== */
   function initReveal() {
-    var targets = $$('.section-head, .trust-card, .division-card, .product-card, .q-step, .q-doc, .export-point, .child-card, .a-stat, .quote-note');
+    var targets = $$('.section-head, .trust-card, .division-card, .product-card, .q-step, .q-doc, .export-point, .child-card, .a-stat, .quote-note, .why-item, .cat, .info-card');
+    if (!targets.length) return;
+
     targets.forEach(function (el) {
       if (el.classList.contains('in') || el.classList.contains('reveal')) return;
       AD('reveal', el);
       var d = el.dataset ? el.dataset.delay : '';
       if (d) el.classList.add('reveal-d' + d.replace(/\D/g, ''));
     });
+
+    // Fallback for browsers without IntersectionObserver (older Safari)
     if (typeof IntersectionObserver !== 'function') {
       targets.forEach(function (el) { AD('in', el); });
       return;
     }
+
+    // Use IntersectionObserver for scroll-triggered animations
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { AD('in', e.target); io.unobserve(e.target); }
+        if (e.isIntersecting) {
+          AD('in', e.target);
+          io.unobserve(e.target);
+        }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -20px 0px'
+    });
+
     targets.forEach(function (el) { io.observe(el); });
-    // safety net: reveal anything still hidden shortly after load
+
+    // Safety net: reveal anything still hidden after load
     setTimeout(function () {
       $$('.reveal:not(.in)').forEach(function (el) { AD('in', el); });
-    }, 2000);
+    }, 1500);
   }
 
   /* ==========================================================================
@@ -508,19 +625,56 @@
 
   /* ==========================================================================
      8.  SMOOTH ANCHOR SCROLL (same-page #links)
+     Cross-browser compatible with iOS Safari and Android fixes
      ========================================================================== */
   function initAnchorScroll() {
     document.addEventListener('click', function (e) {
       var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
       if (!a) return;
-      var id = a.getAttribute('href').slice(1);
-      if (!id) return;
-      var target = document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      var y = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 72;
-      window.scrollTo({ top: Math.max(0, y), behavior: REDUCED ? 'auto' : 'smooth' });
+
+      var href = a.getAttribute('href');
+      // Only handle same-page anchors (not external links with hash)
+      if (href === '#' || href.indexOf('#') === 0) {
+        var id = href === '#' ? '' : href.slice(1);
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+
+        var headerHeight = getHeaderHeight();
+        var targetRect = target.getBoundingClientRect();
+        var y = targetRect.top + scrollY() - headerHeight - 8;
+
+        scrollTo(Math.max(0, y), REDUCED ? 'auto' : 'smooth');
+      }
     });
+
+    // iOS Safari: handle touch events for faster response
+    document.addEventListener('touchstart', function (e) {
+      var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      var href = a.getAttribute('href');
+      if (!href || href.indexOf('#') !== 0) return;
+
+      // Use a slight delay to ensure scroll position is captured
+      var touchTimer = setTimeout(function () {
+        var id = href === '#' ? '' : href.slice(1);
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        var headerHeight = getHeaderHeight();
+        var targetRect = target.getBoundingClientRect();
+        var y = targetRect.top + scrollY() - headerHeight - 8;
+        scrollTo(Math.max(0, y), REDUCED ? 'auto' : 'smooth');
+      }, 100);
+
+      // Clear timeout on scroll to prevent unwanted navigation
+      var scrollHandler = function () {
+        clearTimeout(touchTimer);
+        document.removeEventListener('scroll', scrollHandler);
+      };
+      document.addEventListener('scroll', scrollHandler, { once: true });
+    }, { passive: true });
   }
 
   /* ==========================================================================
