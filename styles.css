@@ -94,6 +94,7 @@ p+p{margin-top:12px}
 
 /* ---------- 4. LAYOUT PRIMITIVES ---------- */
 .container{width:min(var(--container),92%);margin:0 auto}
+@media(max-width:760px){.container{width:calc(100% - 40px)}}
 .section{position:relative;padding:var(--section-pad) 0;scroll-margin-top:calc(var(--header-h) + 8px)}
 .section--slim{padding:clamp(48px,7vw,80px) 0}
 .container--wide{width:min(1380px,94%);margin:0 auto}
@@ -134,8 +135,8 @@ p+p{margin-top:12px}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- 7. SITE HEADER ---------- */
-.site-header{position:sticky;top:0;z-index:120;
-  box-shadow:0 1px 0 rgba(232,238,247,.08),0 12px 24px -12px rgba(6,12,24,.55)}
+.site-header{position:sticky;top:0;z-index:120;background:#fff;
+  box-shadow:0 1px 0 var(--line-soft),0 10px 24px -14px rgba(6,12,24,.22)}
 .header-inner{display:flex;align-items:center;gap:clamp(16px,3vw,40px);min-height:var(--header-h)}
 .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
 .brand-logo{display:block;height:46px;width:auto;border-radius:6px}
@@ -145,18 +146,18 @@ p+p{margin-top:12px}
 .brand-txt b{font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:.055em;color:#fff}
 .brand-txt small{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:rgba(200,215,238,.85);font-weight:600}
 .nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
-.nav-links a{position:relative;padding:10px 15px;border-radius:7px;color:rgba(232,238,247,.82);font-size:14.5px;font-weight:500;transition:color .16s ease,background .16s ease}
-.nav-links a:hover{color:#fff;background:rgba(232,238,247,.08)}
-.nav-links a.active{color:#fff;background:rgba(47,107,237,.16)}
-.nav-links a.active::after{content:"";position:absolute;left:15%;right:15%;bottom:2px;height:2px;border-radius:2px;background:var(--cyan)}
+.nav-links a{position:relative;padding:10px 15px;border-radius:7px;color:var(--text);font-size:14.5px;font-weight:500;transition:color .16s ease,background .16s ease}
+.nav-links a:hover{color:var(--navy);background:rgba(15,27,42,.05)}
+.nav-links a.active{color:var(--navy);background:rgba(47,107,237,.1)}
+.nav-links a.active::after{content:"";position:absolute;left:15%;right:15%;bottom:2px;height:2px;border-radius:2px;background:var(--blue)}
 .header-cta{flex-shrink:0}
 
 /* Burger (mobile) */
-.burger{display:none;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid rgba(232,238,247,.25);
-  border-radius:9px;background:rgba(232,238,247,.06);color:#fff;cursor:pointer;position:relative;z-index:130;padding:0}
+.burger{display:none;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid var(--line);
+  border-radius:9px;background:rgba(15,27,42,.04);color:var(--navy);cursor:pointer;position:relative;z-index:130;padding:0}
 /* ---------- 21. BURGER ICON (3-bar) ---------- */
-.burger span{position:relative;display:block;width:20px;height:2px;background:#fff;border-radius:2px}
-.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px}
+.burger span{position:relative;display:block;width:20px;height:2px;background:var(--navy);border-radius:2px}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--navy);border-radius:2px}
 .burger span::before{top:-6px}
 .burger span::after{top:6px}
 .burger[aria-expanded="true"] span{background:transparent}
@@ -180,11 +181,11 @@ p+p{margin-top:12px}
 
 /* Header states */
 @media(min-width:981px){
-  .site-header{background:rgba(14,27,45,.92);backdrop-filter:blur(10px)}
-  .site-header.is-solid{background:var(--navy);box-shadow:0 1px 0 rgba(232,238,247,.08),0 14px 26px -12px rgba(6,12,24,.6)}
+  .site-header{background:rgba(255,255,255,.96);backdrop-filter:blur(10px)}
+  .site-header.is-solid{background:#fff;box-shadow:0 1px 0 var(--line-soft),0 12px 26px -14px rgba(6,12,24,.26)}
 }
 @media(max-width:980px){
-  .site-header{background:var(--navy)}
+  .site-header{background:#fff}
   .nav-links,.header-cta{display:none}
   .burger{display:inline-flex;margin-left:auto}
   .brand-txt b{font-size:14px}
@@ -220,11 +221,11 @@ p+p{margin-top:12px}
 .hero-scene-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .hero-scene-badges span{font-size:12px;letter-spacing:.04em;color:rgba(232,238,247,.66);border:1px solid rgba(232,238,247,.2);padding:6px 12px;border-radius:var(--radius-pill);background:rgba(232,238,247,.05)}
 
-/* Hero stats band */
-.hero-stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(34px,5vw,54px);border:1px solid rgba(232,238,247,.16);border-radius:14px;background:rgba(14,27,45,.35);backdrop-filter:blur(6px)}
-.hstat{display:flex;flex-direction:column;padding:16px 18px}
-.hstat b{font-family:var(--font-display);font-size:clamp(19px,2vw,25px);font-weight:700;color:#fff;letter-spacing:0}
-.hstat span{font-size:10.5px;letter-spacing:.06em;color:rgba(200,215,238,.78);text-transform:uppercase;margin-top:4px}
+/* Hero stats band (inside the copy column, left of the image) */
+.hero-stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:24px;border:1px solid rgba(232,238,247,.16);border-radius:12px;background:rgba(14,27,45,.4);backdrop-filter:blur(6px)}
+.hstat{display:flex;flex-direction:column;padding:11px 12px}
+.hstat b{font-family:var(--font-display);font-size:clamp(16px,1.8vw,20px);font-weight:700;color:#fff;letter-spacing:0}
+.hstat span{font-size:9.5px;letter-spacing:.05em;color:rgba(200,215,238,.78);text-transform:uppercase;margin-top:3px}
 @media(max-width:760px){
   .hero-inner{grid-template-columns:minmax(0,1fr);gap:clamp(20px,4vw,32px)}
   .hero-scene{aspect-ratio:4/3;max-height:320px}
@@ -501,13 +502,13 @@ br-only{display:none}
   .footer-bottom{gap:10px}
   .to-top{bottom:64px}
   .search-input{padding:12px 14px}
-  .hstat{padding:14px 14px}
-  .hero-stats{gap:10px}
+  .hstat{padding:10px}
+  .hero-stats{gap:7px}
 }
 @media(max-width:420px){
-  .hstat b{font-size:21px}
-  .hstat span{font-size:10.5px}
-  .hero-stats{gap:8px;border-radius:12px}
+  .hstat b{font-size:16px}
+  .hstat span{font-size:9px}
+  .hero-stats{gap:6px;border-radius:11px}
   .q-doc{font-size:13.5px}
   .quote-form{padding:22px 18px}
   .footer-col{font-size:13px}
