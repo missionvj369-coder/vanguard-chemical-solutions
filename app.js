@@ -134,6 +134,7 @@
       if (REDUCED) return;
       var sceneEl = $('.hero-scene');
       if (!sceneEl) return;
+      if (sceneEl.getAttribute && sceneEl.getAttribute('data-static') === '1') return; /* keep static SVG (chemical plant) */
       if (typeof THREE !== 'undefined') { this.mounted = true; this.build(sceneEl); return; }
       var s = document.createElement('script');
       s.src = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js';
@@ -538,8 +539,10 @@
 
     var sceneEl = $('.hero-scene');
     if (sceneEl) {
-      if (REDUCED) { AD('is-3d', sceneEl); } /* static SVG only; skip WebGL */
-      else if (typeof requestAnimationFrame === 'function') {
+      var isStaticHero = sceneEl.getAttribute && sceneEl.getAttribute('data-static') === '1';
+      if (REDUCED) {
+        if (!isStaticHero) AD('is-3d', sceneEl); /* reduced motion: static SVG only */
+      } else if (typeof requestAnimationFrame === 'function') {
         requestAnimationFrame(function () { HeroScene.init(); });
       } else { HeroScene.init(); }
     }

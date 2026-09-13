@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=12">
 </head>
-<body>
+<body class="home-body">
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="scroll-progress"></div>
 
@@ -56,400 +56,130 @@
 </header>
 
 <main id="main">
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-glow" aria-hidden="true"></div>
+
+  <!-- HERO: Visual story first - chemical manufacturing & trading -->
+  <section class="hero home-hero">
     <div class="hero-inner container">
       <div class="hero-copy">
         <span class="hero-eyebrow">Chemical Manufacturer &amp; Trading House — India</span>
-        <h1 id="hero-title">Chemistry. Engineered for <em>what's next.</em></h1>
-        <p class="lead">Speciality, industrial and application-specific chemical solutions — built around quality, traceability and dependable supply.</p>
+        <h1>Manufacturing chemistry.<br><em>Delivering worldwide.</em></h1>
+        <p class="lead">Sixty-six grades across seven divisions — batch-tested, export-documented, shipped FOB / CIF / EXW from India to the world.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" href="index.html#divisions">Explore our solutions</a>
-          <a class="btn btn-outline-light btn-lg" href="mailto:sales@vanguardchemicals.in?subject=Request%20a%20Quotation%20-%20Vanguard%20Chemical%20Solutions&body=">Request a quotation</a>
-        </div>
-        <div class="hero-scene-badges">
-          <span>Batch COA</span>
-          <span>MSDS</span>
-          <span>Traceable lots</span>
-          <span>Export ready</span>
+          <a class="btn btn-primary btn-lg" href="#divisions">View divisions</a>
+          <a class="btn btn-outline-light btn-lg" href="mailto:sales@vanguardchemicals.in?subject=Request%20a%20Quotation%20-%20Vanguard%20Chemical%20Solutions&body=">Request quotation</a>
         </div>
       </div>
-      <div class="hero-scene" aria-hidden="true">
-        <svg class="hero-svg" viewBox="0 0 560 520" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" stroke-width="1.2">
-            <circle cx="280" cy="262" r="212" stroke="#2F6BED" stroke-opacity="0.16"/>
-            <circle cx="280" cy="262" r="160" stroke="#2F6BED" stroke-opacity="0.2"/>
-            <ellipse cx="280" cy="262" rx="130" ry="158" stroke="#3FC6E0" stroke-opacity="0.14"/>
-            <line x1="160" y1="262" x2="400" y2="262" stroke="#9FB8E8" stroke-opacity="0.2"/>
-            <line x1="280" y1="112" x2="280" y2="412" stroke="#9FB8E8" stroke-opacity="0.2"/>
-            <line x1="190" y1="150" x2="402" y2="352" stroke="#9FB8E8" stroke-opacity="0.16"/>
-            <line x1="370" y1="150" x2="178" y2="352" stroke="#9FB8E8" stroke-opacity="0.16"/>
-            <circle cx="126" cy="116" r="16" fill="#2F6BED" fill-opacity="0.9"/>
-            <circle cx="434" cy="130" r="20" fill="#3FC6E0" fill-opacity="0.5"/>
-            <circle cx="452" cy="334" r="13" fill="#2F6BED" fill-opacity="0.85"/>
-            <circle cx="116" cy="392" r="17" fill="#3FC6E0" fill-opacity="0.5"/>
-            <circle cx="280" cy="86" r="13" fill="#9FB8E8" fill-opacity="0.85"/>
-            <circle cx="280" cy="438" r="15" fill="#2F6BED" fill-opacity="0.7"/>
-            <path d="M280 180l78 45 0 90-78 45-78-45 0-90 78-45Z" stroke="#2F6BED" stroke-width="2" stroke-opacity="0.85"/>
-            <path d="M280 180l0 92M280 180l78 45M280 270l-39-23M280 270l39-23" stroke="#3FC6E0" stroke-width="1.4" stroke-opacity="0.8"/>
-          </g>
+      <div class="hero-scene" data-static="1" aria-hidden="true">
+        <!-- Chemical plant / reactor SVG -->
+        <svg class="hero-svg" viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3FC6E0"/>
+              <stop offset="100%" stop-color="#2F6BED"/>
+            </linearGradient>
+            <linearGradient id="tg2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2F6BED"/>
+              <stop offset="100%" stop-color="#0E1B2D"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="260" cy="390" rx="230" ry="20" fill="#0E1B2D" opacity="0.5"/>
+          <!-- Main reactor vessel -->
+          <rect x="170" y="190" width="180" height="190" rx="14" fill="url(#tg2)"/>
+          <ellipse cx="260" cy="190" rx="90" ry="24" fill="#2F6BED" opacity="0.9"/>
+          <ellipse cx="260" cy="380" rx="90" ry="20" fill="#0E1B2D" opacity="0.7"/>
+          <rect x="255" y="130" width="30" height="60" rx="4" fill="#3FC6E0" opacity="0.7"/>
+          <!-- Nozzles -->
+          <circle cx="200" cy="290" r="10" fill="none" stroke="#3FC6E0" stroke-width="2" opacity="0.7"/>
+          <circle cx="260" cy="320" r="8" fill="none" stroke="#3FC6E0" stroke-width="2" opacity="0.6"/>
+          <circle cx="320" cy="290" r="10" fill="none" stroke="#3FC6E0" stroke-width="2" opacity="0.7"/>
+          <circle cx="260" cy="250" r="12" fill="none" stroke="#2F6BED" stroke-width="3" opacity="0.8"/>
+          <!-- Gauge -->
+          <circle cx="150" cy="250" r="16" fill="#0E1B2D" stroke="#3FC6E0" stroke-width="1.5" opacity="0.8"/>
+          <line x1="150" y1="250" x2="158" y2="240" stroke="#3FC6E0" stroke-width="1.5"/>
+          <!-- Left column -->
+          <rect x="40" y="220" width="60" height="170" rx="8" fill="url(#tg)" opacity="0.85"/>
+          <rect x="55" y="200" width="30" height="20" rx="4" fill="#3FC6E0" opacity="0.8"/>
+          <circle cx="70" cy="190" r="7" fill="none" stroke="#3FC6E0" stroke-width="2" opacity="0.8"/>
+          <!-- Right tower -->
+          <rect x="350" y="180" width="70" height="210" rx="8" fill="url(#tg2)" opacity="0.9"/>
+          <rect x="360" y="160" width="50" height="20" rx="4" fill="#2F6BED" opacity="0.9"/>
+          <!-- Connecting pipes -->
+          <path d="M100 260h70M110 310h60M170 220h85M255 260h95" stroke="#3FC6E0" stroke-width="3" stroke-linecap="round" opacity="0.6" fill="none"/>
+          <!-- Steam / vapor -->
+          <circle cx="265" cy="110" r="4" fill="#3FC6E0" opacity="0.6"/>
+          <circle cx="276" cy="95" r="3" fill="#3FC6E0" opacity="0.5"/>
+          <circle cx="260" cy="80" r="2.5" fill="#3FC6E0" opacity="0.4"/>
+          <circle cx="365" cy="110" r="3.5" fill="#3FC6E0" opacity="0.5"/>
+          <circle cx="355" cy="95" r="2.5" fill="#3FC6E0" opacity="0.4"/>
+          <!-- Drums at bottom -->
+          <rect x="40" y="360" width="34" height="30" rx="3" fill="#3FC6E0" opacity="0.5"/>
+          <rect x="90" y="365" width="30" height="25" rx="3" fill="#3FC6E0" opacity="0.4"/>
+          <rect x="440" y="340" width="40" height="50" rx="4" fill="#3FC6E0" opacity="0.5"/>
+          <rect x="135" y="370" width="28" height="20" rx="3" fill="#3FC6E0" opacity="0.35"/>
+          <!-- Labels -->
+          <text x="260" y="290" text-anchor="middle" fill="#E8EEF7" font-size="13" font-weight="600" font-family="space mono,monospace">REACTOR</text>
+          <text x="260" y="306" text-anchor="middle" fill="#8CA0B6" font-size="10" font-family="space mono,monospace">BATCH NO. VC-2026</text>
+          <text x="385" y="150" text-anchor="middle" fill="#3FC6E0" font-size="11" font-family="space mono,monospace">DISTILL</text>
         </svg>
-        <span class="hero-launch">Molecular structure · 3D</span>
+        <span class="hero-launch">Chemical plant ? reactor to container</span>
       </div>
     </div>
     <div class="hero-stats">
       <div class="hstat"><b>66+</b><span>Grades</span></div>
       <div class="hstat"><b>7</b><span>Divisions</span></div>
-      <div class="hstat"><b>24h</b><span>Response</span></div>
+      <div class="hstat"><b>24h</b><span>Quote response</span></div>
       <div class="hstat"><b>100%</b><span>COA + MSDS</span></div>
     </div>
   </section>
 
+  <!-- TRUST TICKER -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span><b>Our policy</b> Same specification, every shipment — batch COA + MSDS with each lot</span>
-      <span><b>Verifiable</b> Third-party inspection welcome before loading</span>
-      <span><b>Traceable</b> Retained samples archived per batch number</span>
-      <span><b>Responsive</b> Email answered within 24 working hours — sales@vanguardchemicals.in</span>
-      <span><b>Compliant</b> Correct HS classification and full EXIM documentation</span>
-      <span><b>Source direct</b> Manufacturer + trader — no middleman risk</span>
+      <span><b>Same spec</b> every shipment ? batch COA + MSDS with each lot</span>
+      <span><b>Verifiable</b> third-party inspection welcome before loading</span>
+      <span><b>Traceable</b> retained samples archived per batch number</span>
+      <span><b>Responsive</b> export desk answers within 24 working hours</span>
+      <span><b>Compliant</b> correct HS classification, full EXIM documentation</span>
+      <span><b>Source direct</b> manufacturer + trader ? no middleman</span>
     </div>
   </div>
 
-  <section class="trust" id="trust">
-    <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">Why Vanguard</span>
-        <h2>Documented, traceable and <em>consistent.</em></h2>
-        <p class="lead">Every order moves on the same operational discipline — confirmed specification, batch traceability and an export desk that actually responds.</p>
-      </div>
-      <div class="trust-grid">
-        <div class="trust-card">
-          <div class="trust-ic"><svg viewBox="0 0 26 26"><path d="M6 5h14v16h-14M6 10h14M6 14.5h14"/></svg></div>
-          <div><h3>Consistent specifications</h3><p>Same target grade and assay on every shipment — no drift between lots, no surprises on arrival.</p></div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-ic"><svg viewBox="0 0 26 26"><path d="M5 8h4v9h4M9 8h4v9h4M13 8h4v9h4M17 8h4v9h4M21 8h4v9h4"/></svg></div>
-          <div><h3>Batch COA + MSDS</h3><p>Certificate of analysis and material safety data sheet accompany every dispatched lot.</p></div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-ic"><svg viewBox="0 0 26 26"><path d="M13 4v18M13 22l6-6 6 6-12 0-6-6-6 6Z"/></svg></div>
-          <div><h3>Traceable lots</h3><p>Batch numbers link every drum back to production records and retained samples.</p></div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-ic"><svg viewBox="0 0 26 26"><path d="M6 6h14v14h-14M10 17l5-9"/></svg></div>
-          <div><h3>Third-party inspection</h3><p>Independent pre-shipment inspection welcome — sampling, weights and records on request.</p></div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-ic"><svg viewBox="0 0 26 26"><path d="M6 5h14v16h-14M6 5l6-4M20 5l-6-4"/></svg></div>
-          <div><h3>Responsive export desk</h3><p>Queries answered within 24 working hours with pricing, lead time and documentation detail.</p></div>
-        </div>
-        <div class="trust-card">
-          <div class="trust-ic"><svg viewBox="0 0 26 26"><path d="M5 5v16M5 5h16M21 5v16M5 10.5h16M5 16h16"/></svg></div>
-          <div><h3>Documentation-oriented supply</h3><p>Export paperwork handled as part of the order — from HS classification to certificate bundles.</p></div>
-        </div>
-      </div>
-      <p class="trust-note">We do not publish unverified certifications. What you can verify — batch documentation, retained samples and inspection — is what we stand behind.</p>
-    </div>
-  </section>
-
+  <!-- DIVISIONS: compact -->
   <section class="divisions" id="divisions">
     <div class="container">
       <div class="section-head center">
-        <span class="eyebrow">Business divisions</span>
-        <h2>Seven divisions. One <em>documentation standard.</em></h2>
-        <p class="lead">From food-grade speciality chemistry to offshore marine maintenance — supplied with the same batch discipline.</p>
+        <span class="eyebrow">What we supply</span>
+        <h2>Seven divisions. <em>One documented supply line.</em></h2>
       </div>
       <div class="divisions-grid">
-        <div class="division-card d-spec">
-          <div class="d-top"><span class="division-mark"><svg viewBox="0 0 26 26"><circle cx="9" cy="14" r="3.2"/><circle cx="17" cy="14" r="3.2"/><circle cx="13" cy="6.5" r="3.2"/><path d="M9 14L17 14M13 6.5L13 14"/></svg></span><div><h3>Speciality Chemicals</h3><p class="d-kicker">Food-grade · Chelators · USP actives</p></div><span class="d-no">Division 01</span></div>
-          <p>Application-specific chemistry backed by full COA and MSDS documentation on every lot.</p>
-          <div class="d-chips"><span>Sodium Metabisulphite</span><span>Sodium Bicarbonate</span><span>Sodium Benzoate</span><span>Glycerine</span><span>EDTA 2Na / 4Na</span></div>
-          <p class="d-note">Every lot batch-numbered, lab-released and COA-documented.</p>
-          <div class="d-actions"><a class="btn btn-sm btn-ghost" href="products.html">Browse division</a><a class="btn btn-sm btn-primary" href="mailto:sales@vanguardchemicals.in?subject=Speciality%20Chemicals%20Enquiry%20-%20Vanguard%20Chemical%20Solutions&body=">Enquire</a></div>
-        </div>
-        <div class="division-card d-ind">
-          <div class="d-top"><span class="division-mark"><svg viewBox="0 0 26 26"><path d="M5 21h16M5 21v-9h16M8 12l3-4M15 12l3-4"/></svg></span><div><h3>Industrial Chemicals</h3><p class="d-kicker">Alkalis · Acids · Solvents · Nutrients</p></div><span class="d-no">Division 02</span></div>
-          <p>Backbone industrial chemistry with lab-verified assay on every consignment.</p>
-          <div class="d-chips"><span>Caustic Soda Flakes</span><span>Soda Ash</span><span>Hydrated Lime</span><span>Urea N46</span><span>IPA / Acids</span></div>
-          <p class="d-note">Container-scale programs with consistent lot-to-lot assay.</p>
-          <div class="d-actions"><a class="btn btn-sm btn-ghost" href="products.html">Browse division</a><a class="btn btn-sm btn-primary" href="mailto:sales@vanguardchemicals.in?subject=Industrial%20Chemicals%20Enquiry%20-%20Vanguard%20Chemical%20Solutions&body=">Enquire</a></div>
-        </div>
-        <div class="division-card d-con">
-          <div class="d-top"><span class="division-mark"><svg viewBox="0 0 26 26"><path d="M5 6h16M5 12h16M5 18h16M10 6h7M10 12h7M10 18h7"/></svg></span><div><h3>Construction Chemicals</h3><p class="d-kicker">Admixtures · Waterproofing · Flooring</p></div><span class="d-no">Division 03</span></div>
-          <p>Built for RMC plants, precasters and contractors.</p>
-          <div class="d-chips"><span>PCE Superplasticizer</span><span>SNF Powder</span><span>Curing Compound</span><span>Tile Adhesive</span></div>
-          <p class="d-note">Site-trial support and technical datasheets with every offer.</p>
-          <div class="d-actions"><a class="btn btn-sm btn-ghost" href="products.html">Browse division</a><a class="btn btn-sm btn-primary" href="mailto:sales@vanguardchemicals.in?subject=Construction%20Chemicals%20Enquiry%20-%20Vanguard%20Chemical%20Solutions&body=">Enquire</a></div>
-        </div>
-        <div class="division-card d-hc">
-          <div class="d-top"><span class="division-mark"><svg viewBox="0 0 26 26"><path d="M13 6v14M6 13h14"/></svg></span><div><h3>Healthcare Chemicals</h3><p class="d-kicker">Pharma solvents · Disinfectants</p></div><span class="d-no">Division 04</span></div>
-          <p>Pharmacopeia-grade hygiene and clinical chemistry.</p>
-          <div class="d-chips"><span>IPA 99.9% Pharma</span><span>Glycerine USP</span><span>Hydrogen Peroxide</span><span>BKC 80%</span></div>
-          <p class="d-note">USP / BP grades with batch traceability for GMP facilities.</p>
-          <div class="d-actions"><a class="btn btn-sm btn-ghost" href="products.html">Browse division</a><a class="btn btn-sm btn-primary" href="mailto:sales@vanguardchemicals.in?subject=Healthcare%20Chemicals%20Enquiry%20-%20Vanguard%20Chemical%20Solutions&body=">Enquire</a></div>
-        </div>
-        <div class="division-card d-cln">
-          <div class="d-top"><span class="division-mark"><svg viewBox="0 0 26 26"><circle cx="9" cy="10" r="3.4"/><circle cx="17" cy="14" r="3.4"/><circle cx="13" cy="19" r="3.4"/><path d="M9 10l8 4"/></svg></span><div><h3>Cleaning Chemicals</h3><p class="d-kicker">Surfactants · Institutional formulations</p></div><span class="d-no">Division 05</span></div>
-          <p>Ready-to-dilute systems for hospitality, facility services and industry.</p>
-          <div class="d-chips"><span>LABSA 96%</span><span>SLES 70%</span><span>SLS Powder</span><span>CAPB 30%</span></div>
-          <p class="d-note">Private-label and custom concentration options available.</p>
-          <div class="d-actions"><a class="btn btn-sm btn-ghost" href="products.html">Browse division</a><a class="btn btn-sm btn-primary" href="mailto:sales@vanguardchemicals.in?subject=Cleaning%20Chemicals%20Enquiry%20-%20Vanguard%20Chemical%20Solutions&body=">Enquire</a></div>
-        </div>
-        <div class="division-card d-og">
-          <div class="d-top"><span class="division-mark"><svg viewBox="0 0 26 26"><path d="M13 4q5 3 18 13q5 3 13 21"/></svg></span><div><h3>Oil &amp; Gas Chemicals</h3><p class="d-kicker">Drilling fluids · Production chemistry</p></div><span class="d-no">Division 06</span></div>
-          <p>API-spec drilling and production chemistry for oilfield programs.</p>
-          <div class="d-chips"><span>Barite API</span><span>Calcium Chloride</span><span>Xanthan Gum</span><span>KCl</span></div>
-          <p class="d-note">API documentation and COA per batch supplied with shipment.</p>
-          <div class="d-actions"><a class="btn btn-sm btn-ghost" href="products.html">Browse division</a><a class="btn btn-sm btn-primary" href="mailto:sales@vanguardchemicals.in?subject=Oil%20%26%20Gas%20Chemicals%20Enquiry%20-%20Vanguard%20Chemical%20Solutions&body=">Enquire</a></div>
-        </div>
-        <div class="division-card d-mar">
-          <div class="d-top"><span class="division-mark"><svg viewBox="0 0 26 26"><path d="M6 9q4 3 13 9q4-3 20 9M6 16q4 3 13 16q4-3 20 16"/></svg></span><div><h3>Marine Chemicals</h3><p class="d-kicker">Tank cleaning · Boiler treatment</p></div><span class="d-no">Division 07</span></div>
-          <p>Ship maintenance chemistry for tankers, bulkers and offshore fleets.</p>
-          <div class="d-chips"><span>Tank Cleaner</span><span>Marine Descaler</span><span>Boiler Treatment</span><span>Hypochlorite 65%</span></div>
-          <p class="d-note">Port-agent delivery coordination available worldwide.</p>
-          <div class="d-actions"><a class="btn btn-sm btn-ghost" href="products.html">Browse division</a><a class="btn btn-sm btn-primary" href="mailto:sales@vanguardchemicals.in?subject=Marine%20Chemicals%20Enquiry%20-%20Vanguard%20Chemical%20Solutions&body=">Enquire</a></div>
-        </div>
+        <div class="division-card"><div class="d-top"><span class="division-mark">01</span><div><h3>Speciality</h3><span class="d-kicker">Food-grade · Chelators · USP actives</span></div></div><p>Sodium metabisulphite, bicarbonate, benzoate, glycerine USP, EDTA, zinc sulphate.</p></div>
+        <div class="division-card"><div class="d-top"><span class="division-mark">02</span><div><h3>Industrial</h3><span class="d-kicker">Alkalis · Acids · Solvents · Nutrients</span></div></div><p>Caustic soda, soda ash, lime, urea, DAP, MOP, HCl, H₂SO₄, methanol, acetone.</p></div>
+        <div class="division-card"><div class="d-top"><span class="division-mark">03</span><div><h3>Construction</h3><span class="d-kicker">Admixtures · Waterproofing · Flooring</span></div></div><p>PCE superplasticizer, SNF powder, curing compound, tile adhesive, waterproofing.</p></div>
+        <div class="division-card"><div class="d-top"><span class="division-mark">04</span><div><h3>Healthcare</h3><span class="d-kicker">Pharma solvents · Disinfectants</span></div></div><p>IPA 99.9% pharma, glycerine USP, hydrogen peroxide, BKC 80%, disinfectants.</p></div>
+        <div class="division-card"><div class="d-top"><span class="division-mark">05</span><div><h3>Cleaning</h3><span class="d-kicker">Surfactants · Institutional formulations</span></div></div><p>LABSA 96%, SLES 70%, SLS powder, CAPB 30%, industrial degreasers and cleaners.</p></div>
+        <div class="division-card"><div class="d-top"><span class="division-mark">06</span><div><h3>Oil &amp; Gas</h3><span class="d-kicker">Drilling fluids · Production chemistry</span></div></div><p>Barite API, calcium chloride, xanthan gum, KCl, defoamer, CMC for drilling muds.</p></div>
+        <div class="division-card"><div class="d-top"><span class="division-mark">07</span><div><h3>Marine</h3><span class="d-kicker">Tank cleaning · Boiler treatment</span></div></div><p>Tank cleaner, marine descaler, boiler treatment, hypochlorite 65%, fuel treatment.</p></div>
       </div>
+      <div class="section-cta center"><a class="btn btn-ghost" href="products.html">View full catalogue (66 grades) →</a></div>
     </div>
   </section>
 
-  <section class="catalogue" id="catalogue">
-    <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">Product catalogue</span>
-        <h2>Search the chemical <em>shelf.</em></h2>
-        <p class="lead">Verified grades with application notes. Filter by division or search by name — enquire with one click.</p>
-      </div>
-      <div class="toolbar">
-        <input type="search" id="q" class="search-input" placeholder="Search products — e.g. caustic, LABSA, barite, IPA..." aria-label="Search products" oninput="filterQ(this.value)">
-        <a class="btn btn-ghost" href="products.html">Open full catalogue</a>
-      </div>
-      <div class="filterbar" role="group" aria-label="Filter by division">
-        <button type="button" class="filter-btn active" data-cat="all" onclick="filterCat('all',this)">All</button>
-        <button type="button" class="filter-btn" data-cat="spec" onclick="filterCat('spec',this)">Speciality</button>
-        <button type="button" class="filter-btn" data-cat="ind" onclick="filterCat('ind',this)">Industrial</button>
-        <button type="button" class="filter-btn" data-cat="con" onclick="filterCat('con',this)">Construction</button>
-        <button type="button" class="filter-btn" data-cat="hc" onclick="filterCat('hc',this)">Healthcare</button>
-        <button type="button" class="filter-btn" data-cat="cln" onclick="filterCat('cln',this)">Cleaning</button>
-        <button type="button" class="filter-btn" data-cat="og" onclick="filterCat('og',this)">Oil &amp; Gas</button>
-        <button type="button" class="filter-btn" data-cat="mar" onclick="filterCat('mar',this)">Marine</button>
-      </div>
-      <p class="result-count" id="resultCount"></p>
-      <div class="product-grid" id="grid"></div>
+  <!-- WHY US: 3 compact points -->
+  <section class="why-3">
+    <div class="container why-row">
+      <div class="why-item"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"/></svg></div><div><h3>Batch COA + MSDS</h3><p>Certificate of analysis and safety data sheet with every lot.</p></div></div>
+      <div class="why-item"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l9 4v5c0 5-4 9-9 10-5-1-9-5-9-10V7l9-4z"/></svg></div><div><h3>Traceable batches</h3><p>Every drum links back to production records and retained samples.</p></div></div>
+      <div class="why-item"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20h18M5 20V8l7-5 7 5v12M9 20v-6h6v6"/></svg></div><div><h3>Export ready</h3><p>FOB / CIF / EXW with HS classification and EXIM paperwork handled.</p></div></div>
     </div>
   </section>
 
-  <section class="quality" id="quality">
+  <!-- CTA -->
+  <section class="cta-email">
     <div class="container">
-      <div class="quality-banner">
-        <div class="section-head">
-          <span class="eyebrow">Quality &amp; traceability</span>
-          <h2>An enterprise quality system on <em>every batch.</em></h2>
-          <p class="lead">We document what we ship. Batch numbers, laboratory release, retained samples and inspection — the paper trail is part of the product.</p>
-        </div>
-        <div class="quality-steps">
-          <div class="q-step">
-            <span class="q-no">Step 01</span>
-            <div class="q-ico"><svg viewBox="0 0 26 26"><path d="M6 5h14v16h-14M6 10h14M6 14.5h14"/></svg></div>
-            <h3>Specification lock</h3>
-            <p>Grade, assay and packing are agreed and frozen before production — same target every time.</p>
-          </div>
-          <div class="q-step">
-            <span class="q-no">Step 02</span>
-            <div class="q-ico"><svg viewBox="0 0 26 26"><path d="M12 3v20M12 23l5-6 5 6-10 0l-5-6-5 6Z"/></svg></div>
-            <h3>Laboratory release</h3>
-            <p>Every batch is tested and released with its own certificate of analysis before loading.</p>
-          </div>
-          <div class="q-step">
-            <span class="q-no">Step 03</span>
-            <div class="q-ico"><svg viewBox="0 0 26 26"><path d="M6 4v18M6 4h14M20 4v18M8 9h10M8 15h10"/></svg></div>
-            <h3>Retained samples</h3>
-            <p>Samples are archived per batch number so any lot can be referenced months later.</p>
-          </div>
-          <div class="q-step">
-            <span class="q-no">Step 04</span>
-            <div class="q-ico"><svg viewBox="0 0 26 26"><path d="M7 6h12v14h-12M10 17l5-9"/></svg></div>
-            <h3>Third-party inspection</h3>
-            <p>SGS / Intertek-style inspection is welcome at any stage — sampling, weights and records.</p>
-          </div>
-        </div>
-      </div>
-      <div class="q-docs">
-        <div class="q-doc">
-          <svg viewBox="0 0 26 26"><path d="M6 5h14v16h-14M6 10h14M6 14.5h14"/></svg>
-          <div><b>Certificate of Analysis</b><small>Batch-level assay on request before dispatch</small></div>
-        </div>
-        <div class="q-doc">
-          <svg viewBox="0 0 26 26"><path d="M5 8h4v9h4M9 8h4v9h4M13 8h4v9h4M17 8h4v9h4M21 8h4v9h4"/></svg>
-          <div><b>MSDS</b><small>Material safety data sheet with every lot</small></div>
-        </div>
-        <div class="q-doc">
-          <svg viewBox="0 0 26 26"><path d="M13 4v18M13 22l6-6 6 6-12 0-6-6-6 6Z"/></svg>
-          <div><b>Batch traceability</b><small>Batch numbers track every drum to records</small></div>
-        </div>
-        <div class="q-doc">
-          <svg viewBox="0 0 26 26"><path d="M6 6h14v14h-14M10 17l5-9"/></svg>
-          <div><b>Export documentation</b><small>Full EXIM paperwork handled with the order</small></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="export" id="export">
-    <div class="container">
-      <div class="export-inner">
-        <div class="export-copy">
-          <span class="hero-eyebrow">Export desk</span>
-          <h2>India to <em>world.</em></h2>
-          <p class="lead">A manufacturer and trader that documents every step — from source selection and batch release to compliant export paperwork at the port.</p>
-          <div class="export-points">
-            <div class="export-point"><svg viewBox="0 0 26 26"><path d="M8 16l5-9l4 5"/></svg><p><b>Source direct.</b> Manufacturer + trader positioning with no marketplace margin and no middleman risk.</p></div>
-            <div class="export-point"><svg viewBox="0 0 26 26"><path d="M8 16l5-9l4 5"/></svg><p><b>Documentation built in.</b> COA, MSDS, HS classification and certificate bundles handled as part of the order.</p></div>
-            <div class="export-point"><svg viewBox="0 0 26 26"><path d="M8 16l5-9l4 5"/></svg><p><b>Inspection ready.</b> Third-party pre-shipment inspection accepted before loading.</p></div>
-            <div class="export-point"><svg viewBox="0 0 26 26"><path d="M8 16l5-9l4 5"/></svg><p><b>Responsive enquiry.</b> Specification, quantity and destination port receive a priced reply within 24 working hours.</p></div>
-          </div>
-          <div class="export-terms"><span>FOB</span><span>CIF</span><span>EXW</span><span>Container &amp; break-bulk</span></div>
-        </div>
-        <div class="export-visual">
-          <div class="export-route">
-            <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" stroke="#2F6BED" stroke-opacity="0.16" stroke-width="1">
-                <circle cx="260" cy="238" r="70"/>
-                <circle cx="260" cy="238" r="135"/>
-                <circle cx="260" cy="238" r="205"/>
-              </g>
-              <g fill="none" stroke="#3FC6E0" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="10 8">
-                <circle cx="260" cy="238" r="88"/>
-                <circle cx="260" cy="238" r="150"/>
-                <circle cx="260" cy="238" r="212"/>
-              </g>
-              <g fill="none" stroke="#9FB8E8" stroke-opacity="0.55" stroke-width="1.4" stroke-dasharray="5 7">
-                <path d="M260 238L438 104M260 238L416 322M260 238L120 118M260 238L96 320M260 238L210 52M260 238L336 384M260 238L70 210M260 238L452 240"/>
-              </g>
-              <circle cx="260" cy="238" r="10" fill="#2F6BED" fill-opacity="0.9"/>
-              <circle cx="438" cy="104" r="6" fill="#3FC6E0" fill-opacity="0.7"/>
-              <circle cx="416" cy="322" r="6" fill="#3FC6E0" fill-opacity="0.7"/>
-              <circle cx="120" cy="118" r="6" fill="#3FC6E0" fill-opacity="0.7"/>
-              <circle cx="96" cy="320" r="6" fill="#3FC6E0" fill-opacity="0.7"/>
-            </svg>
-          </div>
-          <div class="export-caption">Schematic supply network — abstract only, not a map of operational offices.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about-band" id="about">
-    <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">About Vanguard</span>
-        <h2>A manufacturer and trader that <em>documents everything.</em></h2>
-        <p class="lead">Vanguard Chemical Solutions LLP supplies speciality and industrial chemistry across application areas — from food-grade additives to offshore marine maintenance.</p>
-      </div>
-      <div class="child-pages">
-        <div class="child-card">
-          <h3>Who we are</h3>
-          <p>A manufacturer + trading house built on specification discipline: reactor or source, laboratory release and documented supply in one line.</p>
-          <a class="btn btn-sm btn-ghost" href="about.html">Read more</a>
-        </div>
-        <div class="child-card">
-          <h3>Product catalogue</h3>
-          <p>Sixty-six verified grades across seven divisions, searchable and filterable, each with application notes and a one-click enquiry path.</p>
-          <a class="btn btn-sm btn-ghost" href="products.html">Browse catalogue</a>
-        </div>
-        <div class="child-card">
-          <h3>Contact the export desk</h3>
-          <p>Send your specification, quantity and destination port. You receive pricing, lead time and a COA sample within 24 working hours.</p>
-          <a class="btn btn-sm btn-ghost" href="contact.html">Contact us</a>
-        </div>
-      </div>
-      <div class="about-extra">
-        <div class="a-stat"><b>7</b><span>Business divisions — speciality, industrial, construction, healthcare, cleaning, oil &amp; gas and marine.</span></div>
-        <div class="a-stat"><b>66+</b><span>Verified product grades searchable in the catalogue.</span></div>
-        <div class="a-stat"><b>3</b><span>Incoterms offered — FOB, CIF and EXW, quoted per order.</span></div>
-        <div class="a-stat"><b>24h</b><span>Working-hour response target from the export desk.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="quote" id="quote">
-    <div class="container">
-      <div class="quote-inner">
-        <div class="quote-copy">
-          <span class="hero-eyebrow">Request a quotation</span>
-          <h2>Tell us what you <em>need.</em></h2>
-          <p class="lead">Send your specification, quantity and destination port. Our export desk replies with pricing, lead time and a COA sample — typically within 24 working hours.</p>
-          <div class="quote-notes">
-            <div class="quote-note"><svg viewBox="0 0 26 26"><path d="M8 16l5-9l4 5"/></svg><p>FOB, CIF and EXW terms quoted per order.</p></div>
-            <div class="quote-note"><svg viewBox="0 0 26 26"><path d="M8 16l5-9l4 5"/></svg><p>COA and MSDS provided with every quotation and lot.</p></div>
-            <div class="quote-note"><svg viewBox="0 0 26 26"><path d="M8 16l5-9l4 5"/></svg><p>Third-party inspection welcome before loading.</p></div>
-          </div>
-          <div class="quote-contact">
-            <span>Prefer email? Write directly to</span>
-            <b><a href="mailto:sales@vanguardchemicals.in?subject=RFQ%20-%20Vanguard%20Chemical%20Solutions&body=">sales@vanguardchemicals.in</a></b>
-            <span>Export desk · Mon–Sat 9:30–19:00 IST</span>
-          </div>
-        </div>
-        <form class="quote-form" id="quote-form" novalidate aria-label="Quotation request">
-          <div class="field">
-            <label for="q-name">Name <span class="req">*</span></label>
-            <input id="q-name" name="name" type="text" required autocomplete="name" placeholder="Full name">
-            <span class="err">Please enter your name.</span>
-          </div>
-          <div class="field">
-            <label for="q-company">Company <span class="req">*</span></label>
-            <input id="q-company" name="company" type="text" required autocomplete="organization" placeholder="Company / organisation">
-            <span class="err">Please enter your company.</span>
-          </div>
-          <div class="field">
-            <label for="q-email">Email <span class="req">*</span></label>
-            <input id="q-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com">
-            <span class="err">Please enter a valid email.</span>
-          </div>
-          <div class="field">
-            <label for="q-phone">Phone</label>
-            <input id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98200 00000">
-            <span class="err">Please enter a valid phone number.</span>
-          </div>
-          <div class="field">
-            <label for="q-product">Product / chemical required</label>
-            <input id="q-product" name="product" type="text" placeholder="e.g. Caustic Soda Flakes 99%">
-          </div>
-          <div class="field">
-            <label for="q-division">Division</label>
-            <select id="q-division" name="division">
-              <option value="">Select division</option>
-              <option value="Speciality Chemicals">Speciality Chemicals</option>
-              <option value="Industrial Chemicals">Industrial Chemicals</option>
-              <option value="Construction Chemicals">Construction Chemicals</option>
-              <option value="Healthcare Chemicals">Healthcare Chemicals</option>
-              <option value="Cleaning Chemicals">Cleaning Chemicals</option>
-              <option value="Oil &amp; Gas Chemicals">Oil &amp; Gas Chemicals</option>
-              <option value="Marine Chemicals">Marine Chemicals</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="q-qty">Quantity</label>
-            <input id="q-qty" name="quantity" type="text" placeholder="e.g. 26 MT">
-          </div>
-          <div class="field">
-            <label for="q-dest">Destination</label>
-            <input id="q-dest" name="destination" type="text" placeholder="e.g. Nhava Sheva, India / port name">
-          </div>
-          <div class="field wide">
-            <label for="q-msg">Message</label>
-            <textarea id="q-msg" name="message" rows="4" placeholder="Assay target, packing preference, documentation needs..."></textarea>
-          </div>
-          <label class="form-hp" aria-hidden="true">Leave this field empty<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary btn-lg">Send quotation request</button>
-          </div>
-          <p class="form-note"><b>How it works:</b> submitting opens a pre-filled email to sales@vanguardchemicals.in where you confirm and send. No data travels through this website — your enquiry is delivered by your own email client.</p>
-          <div class="form-status" id="form-status"></div>
-          <div class="form-sent" id="form-sent"></div>
-        </form>
-      </div>
+      <h2>Send your spec. Get a priced offer <em>within 24 hours.</em></h2>
+      <p>Email the export desk with product, quantity and destination port — receive pricing, lead time and a COA sample.</p>
+      <a class="btn btn-primary btn-lg" href="mailto:sales@vanguardchemicals.in?subject=RFQ%20-%20Vanguard%20Chemical%20Solutions&body=Product%20%2F%20Grade%3A%20%0D%0AQuantity%3A%20%0D%0APacking%3A%20%0D%0ADestination%20Port%3A%20%0D%0AIncoterm%3A%20%0D%0A">Email Export Desk</a>
+      <span class="cta-alt">or <a href="contact.html">view contact options</a></span>
     </div>
   </section>
 
